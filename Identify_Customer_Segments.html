@@ -13145,7 +13145,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import libraries here; add more as necessary</span>
@@ -13178,7 +13178,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[2]:</div>
+    <div class="prompt output_prompt">Out[1]:</div>
 
 
 
@@ -13226,7 +13226,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[174]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load in the general demographics data.</span>
@@ -13243,7 +13243,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[121]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of Demographic data for general population:&quot;</span><span class="p">,</span> <span class="n">azdias</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -13935,7 +13935,7 @@ Shape of Feature Summary for degmographic data: (85, 4)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[241]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Identify missing or unknown data values and convert them to NaNs.</span>
@@ -13948,27 +13948,23 @@ Shape of Feature Summary for degmographic data: (85, 4)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[175]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat_info</span><span class="p">)):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">To_list</span><span class="o">=</span><span class="nb">eval</span><span class="p">(</span><span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">To_list</span>
+    <span class="n">string</span><span class="o">=</span><span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">List</span><span class="o">=</span><span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    
+    <span class="n">manual_list</span><span class="o">=</span><span class="p">[]</span>
         
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">string</span><span class="o">=</span><span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">List</span><span class="o">=</span><span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
         
-        <span class="n">manual_list</span><span class="o">=</span><span class="p">[]</span>
-        
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">List</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">x</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-                <span class="n">manual_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="n">manual_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-        <span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">manual_list</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">List</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">x</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+            <span class="n">manual_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">manual_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+    <span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">manual_list</span>
                 
 </pre></div>
 
@@ -13979,7 +13975,7 @@ Shape of Feature Summary for degmographic data: (85, 4)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[176]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat_info</span><span class="p">)):</span>
@@ -13988,6 +13984,37 @@ Shape of Feature Summary for degmographic data: (85, 4)
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[177]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total number of missing values after conversion is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">azdias</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total number of missing values after conversion is 8373929
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -14003,7 +14030,7 @@ Shape of Feature Summary for degmographic data: (85, 4)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[178]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Perform an assessment of how much missing data there is in each column of the</span>
@@ -14021,7 +14048,7 @@ Shape of Feature Summary for degmographic data: (85, 4)
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[13]:</div>
+    <div class="prompt output_prompt">Out[178]:</div>
 
 
 
@@ -14099,7 +14126,7 @@ Length: 85, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[179]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Investigate patterns in the amount of missing data in each column.</span>
@@ -14112,7 +14139,7 @@ Length: 85, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[180]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">azdias</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -14150,7 +14177,7 @@ Length: 85, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[181]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">900000</span><span class="p">))</span>
@@ -14166,7 +14193,7 @@ Length: 85, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[16]:</div>
+    <div class="prompt output_prompt">Out[181]:</div>
 
 
 
@@ -14206,7 +14233,7 @@ Length: 85, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[182]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Most_Missing</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
@@ -14244,7 +14271,7 @@ dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[183]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Double checking those findings by creating a sorted dictionary with the percentage of missing values</span>
@@ -14266,7 +14293,7 @@ dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[184]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#showing the dictionary. As we can see, the highest % columns are the same with the outliers</span>
@@ -14284,7 +14311,7 @@ dtype: int64
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[19]:</div>
+    <div class="prompt output_prompt">Out[184]:</div>
 
 
 
@@ -14385,7 +14412,7 @@ dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[185]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -14401,7 +14428,7 @@ dtype: int64
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[20]:</div>
+    <div class="prompt output_prompt">Out[185]:</div>
 
 
 
@@ -14426,7 +14453,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[186]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Remove the outlier columns from the dataset. (You&#39;ll perform other data</span>
@@ -14440,7 +14467,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[187]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Drop the outliers</span>
@@ -14460,7 +14487,7 @@ dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[22]:</div>
+    <div class="prompt output_prompt">Out[187]:</div>
 
 
 
@@ -14477,7 +14504,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[188]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">=</span><span class="n">azdias</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -14490,7 +14517,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[189]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
@@ -14506,13 +14533,13 @@ dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[24]:</div>
+    <div class="prompt output_prompt">Out[189]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8622a93208&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2c5d0a6d30&gt;</pre>
 </div>
 
 </div>
@@ -14538,7 +14565,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[190]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -14595,7 +14622,7 @@ dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[191]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#I create a dictionary with the groups of features that appear to have the same amount of missing values</span>
@@ -14619,7 +14646,7 @@ dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[192]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dict_of_missing</span>
@@ -14635,7 +14662,7 @@ dtype: int64
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[27]:</div>
+    <div class="prompt output_prompt">Out[192]:</div>
 
 
 
@@ -14735,7 +14762,7 @@ We also notice that their names in each group are very similar and by checking t
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[124]:</div>
+<div class="prompt input_prompt">In&nbsp;[195]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># How much data is missing in each row of the dataset?</span>
@@ -14789,7 +14816,7 @@ dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[125]:</div>
+<div class="prompt input_prompt">In&nbsp;[196]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Finding out at how many missing values per row, we can include a certain % of the data.</span>
@@ -14844,7 +14871,7 @@ Rows with less than 9  missing values, include 86.5891849496365 of the total dat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[126]:</div>
+<div class="prompt input_prompt">In&nbsp;[197]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Write code to divide the data into two subsets based on the number of missing</span>
@@ -14860,7 +14887,7 @@ Rows with less than 9  missing values, include 86.5891849496365 of the total dat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[127]:</div>
+<div class="prompt input_prompt">In&nbsp;[198]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">subset1</span><span class="o">.</span><span class="n">shape</span>
@@ -14876,7 +14903,7 @@ Rows with less than 9  missing values, include 86.5891849496365 of the total dat
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[127]:</div>
+    <div class="prompt output_prompt">Out[198]:</div>
 
 
 
@@ -14893,7 +14920,7 @@ Rows with less than 9  missing values, include 86.5891849496365 of the total dat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[199]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compare the distribution of values for at least five columns where there are</span>
@@ -14907,7 +14934,7 @@ Rows with less than 9  missing values, include 86.5891849496365 of the total dat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[200]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dict_of_missing</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]:</span>
@@ -15107,7 +15134,7 @@ Rows with less than 9  missing values, include 86.5891849496365 of the total dat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[201]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Checking all the different kinds of types:</span>
@@ -15125,7 +15152,7 @@ Rows with less than 9  missing values, include 86.5891849496365 of the total dat
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[34]:</div>
+    <div class="prompt output_prompt">Out[201]:</div>
 
 
 
@@ -15142,7 +15169,7 @@ Rows with less than 9  missing values, include 86.5891849496365 of the total dat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[202]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># How many features are there of each data type?</span>
@@ -15160,7 +15187,7 @@ Rows with less than 9  missing values, include 86.5891849496365 of the total dat
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[35]:</div>
+    <div class="prompt output_prompt">Out[202]:</div>
 
 
 
@@ -15195,7 +15222,7 @@ Name: type, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[203]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Assess categorical variables: which are binary, which are multi-level, and</span>
@@ -15209,7 +15236,7 @@ Name: type, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[167]:</div>
+<div class="prompt input_prompt">In&nbsp;[204]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#storing all categorical attributes from feat_info to a variable called categoricals</span>
@@ -15228,7 +15255,7 @@ Name: type, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[167]:</div>
+    <div class="prompt output_prompt">Out[204]:</div>
 
 
 
@@ -15418,7 +15445,7 @@ Name: type, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[129]:</div>
+<div class="prompt input_prompt">In&nbsp;[205]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Checking the kind of categoricals that exist in subset1 (subset without or few missing values) and storing them</span>
@@ -15495,7 +15522,7 @@ List of categorical features in subset1: [&#39;ANREDE_KZ&#39;, &#39;CJT_GESAMTTY
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[130]:</div>
+<div class="prompt input_prompt">In&nbsp;[206]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#We will drop the attribute &quot;CAMEO_DEU_2015&quot; for the shake of simplicity</span>
@@ -15534,7 +15561,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[131]:</div>
+<div class="prompt input_prompt">In&nbsp;[207]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#We will also drop the feature &quot;GEBAUDETYP&quot; as by looking into the customer&#39;s data, it turned out that it included</span>
@@ -15572,7 +15599,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[132]:</div>
+<div class="prompt input_prompt">In&nbsp;[208]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">subset1</span><span class="o">.</span><span class="n">shape</span>
@@ -15588,7 +15615,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[132]:</div>
+    <div class="prompt output_prompt">Out[208]:</div>
 
 
 
@@ -15605,7 +15632,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[133]:</div>
+<div class="prompt input_prompt">In&nbsp;[209]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#we will also remove these two features it from our list</span>
@@ -15620,7 +15647,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[135]:</div>
+<div class="prompt input_prompt">In&nbsp;[210]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#We notice that there is one binary categorical feature that doesn&#39;t take numerical values</span>
@@ -15659,7 +15686,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[136]:</div>
+<div class="prompt input_prompt">In&nbsp;[211]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">subset1</span><span class="o">.</span><span class="n">shape</span>
@@ -15675,7 +15702,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[136]:</div>
+    <div class="prompt output_prompt">Out[211]:</div>
 
 
 
@@ -15692,7 +15719,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[137]:</div>
+<div class="prompt input_prompt">In&nbsp;[212]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#checking</span>
@@ -15710,7 +15737,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[137]:</div>
+    <div class="prompt output_prompt">Out[212]:</div>
 
 
 
@@ -15727,7 +15754,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[138]:</div>
+<div class="prompt input_prompt">In&nbsp;[213]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Storing the multi level categories present in subset1 to a list</span>
@@ -15746,7 +15773,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[139]:</div>
+<div class="prompt input_prompt">In&nbsp;[214]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">list_of_multi_cat</span>
@@ -15762,7 +15789,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[139]:</div>
+    <div class="prompt output_prompt">Out[214]:</div>
 
 
 
@@ -15790,7 +15817,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[140]:</div>
+<div class="prompt input_prompt">In&nbsp;[215]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#re encoding the multi level categorical features</span>
@@ -15805,7 +15832,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[141]:</div>
+<div class="prompt input_prompt">In&nbsp;[216]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">subset1</span><span class="o">.</span><span class="n">shape</span>
@@ -15821,7 +15848,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[141]:</div>
+    <div class="prompt output_prompt">Out[216]:</div>
 
 
 
@@ -15863,7 +15890,7 @@ Out of the multi level categorical features, one was dropped for the shake of si
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[142]:</div>
+<div class="prompt input_prompt">In&nbsp;[217]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Finding out which attributes are of mixed type</span>
@@ -15882,7 +15909,7 @@ Out of the multi level categorical features, one was dropped for the shake of si
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[142]:</div>
+    <div class="prompt output_prompt">Out[217]:</div>
 
 
 
@@ -15974,7 +16001,7 @@ Out of the multi level categorical features, one was dropped for the shake of si
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[143]:</div>
+<div class="prompt input_prompt">In&nbsp;[218]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">subset1</span><span class="p">[</span><span class="s2">&quot;PRAEGENDE_JUGENDJAHRE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -15990,7 +16017,7 @@ Out of the multi level categorical features, one was dropped for the shake of si
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[143]:</div>
+    <div class="prompt output_prompt">Out[218]:</div>
 
 
 
@@ -16022,7 +16049,7 @@ Name: PRAEGENDE_JUGENDJAHRE, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[144]:</div>
+<div class="prompt input_prompt">In&nbsp;[219]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#By looking into the details of Data_Dictionary.md, we create a new column by replacing</span>
@@ -16043,7 +16070,7 @@ Name: PRAEGENDE_JUGENDJAHRE, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[145]:</div>
+<div class="prompt input_prompt">In&nbsp;[220]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#checking</span>
@@ -16061,7 +16088,7 @@ Name: PRAEGENDE_JUGENDJAHRE, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[145]:</div>
+    <div class="prompt output_prompt">Out[220]:</div>
 
 
 
@@ -16084,7 +16111,7 @@ Name: PRAEGENDE_JUGENDJAHRE_Date, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[146]:</div>
+<div class="prompt input_prompt">In&nbsp;[221]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#we do the same thing by creating a column for the movement. </span>
@@ -16101,7 +16128,7 @@ Name: PRAEGENDE_JUGENDJAHRE_Date, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[147]:</div>
+<div class="prompt input_prompt">In&nbsp;[222]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#checking</span>
@@ -16119,7 +16146,7 @@ Name: PRAEGENDE_JUGENDJAHRE_Date, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[147]:</div>
+    <div class="prompt output_prompt">Out[222]:</div>
 
 
 
@@ -16138,7 +16165,7 @@ Name: PRAEGENDE_JUGENDJAHRE_Movement, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[148]:</div>
+<div class="prompt input_prompt">In&nbsp;[223]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">subset1</span><span class="o">.</span><span class="n">shape</span>
@@ -16154,7 +16181,7 @@ Name: PRAEGENDE_JUGENDJAHRE_Movement, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[148]:</div>
+    <div class="prompt output_prompt">Out[223]:</div>
 
 
 
@@ -16171,7 +16198,7 @@ Name: PRAEGENDE_JUGENDJAHRE_Movement, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[149]:</div>
+<div class="prompt input_prompt">In&nbsp;[224]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#we will now drop the feature &quot;PRAEGENDE_JUGENDJAHRE&quot; as we do not need it anymore</span>
@@ -16186,7 +16213,7 @@ Name: PRAEGENDE_JUGENDJAHRE_Movement, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[150]:</div>
+<div class="prompt input_prompt">In&nbsp;[225]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#By looking into the data_dictionary, we see that the tens digits correspond to wealth and ones digits to life stage</span>
@@ -16206,7 +16233,7 @@ Name: PRAEGENDE_JUGENDJAHRE_Movement, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[151]:</div>
+<div class="prompt input_prompt">In&nbsp;[226]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#checking</span>
@@ -16223,7 +16250,7 @@ Name: PRAEGENDE_JUGENDJAHRE_Movement, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[151]:</div>
+    <div class="prompt output_prompt">Out[226]:</div>
 
 
 
@@ -16245,7 +16272,7 @@ Name: CAMEO_INTL_2015_Wealth, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[152]:</div>
+<div class="prompt input_prompt">In&nbsp;[227]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">subset1</span><span class="p">[</span><span class="s2">&quot;CAMEO_INTL_2015_LifeStage&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">subset1</span><span class="p">[</span><span class="s2">&quot;CAMEO_INTL_2015&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="s1">&#39;21&#39;</span><span class="p">,</span><span class="s1">&#39;31&#39;</span><span class="p">,</span><span class="s1">&#39;41&#39;</span><span class="p">,</span><span class="s1">&#39;51&#39;</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
@@ -16262,7 +16289,7 @@ Name: CAMEO_INTL_2015_Wealth, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[153]:</div>
+<div class="prompt input_prompt">In&nbsp;[228]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#checking</span>
@@ -16279,7 +16306,7 @@ Name: CAMEO_INTL_2015_Wealth, dtype: int64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[153]:</div>
+    <div class="prompt output_prompt">Out[228]:</div>
 
 
 
@@ -16301,7 +16328,7 @@ Name: CAMEO_INTL_2015_LifeStage, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[154]:</div>
+<div class="prompt input_prompt">In&nbsp;[229]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#We&#39;ll now drop the column &quot;CAMEO_INTL_2015&quot; as we do not need it</span>
@@ -16344,7 +16371,7 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[230]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If there are other re-engineering tasks you need to perform, make sure you</span>
@@ -16358,7 +16385,7 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[231]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Do whatever you need to in order to ensure that the dataframe only contains</span>
@@ -16372,7 +16399,7 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[156]:</div>
+<div class="prompt input_prompt">In&nbsp;[232]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#we will one hot encode the new feature columns</span>
@@ -16386,7 +16413,7 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[157]:</div>
+<div class="prompt input_prompt">In&nbsp;[233]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">subset1</span><span class="o">.</span><span class="n">shape</span>
@@ -16402,7 +16429,7 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[157]:</div>
+    <div class="prompt output_prompt">Out[233]:</div>
 
 
 
@@ -16427,7 +16454,7 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[175]:</div>
+<div class="prompt input_prompt">In&nbsp;[234]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -16442,34 +16469,34 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
     <span class="c1"># Put in code here to execute all main cleaning steps:</span>
     <span class="c1"># convert missing value codes into NaNs, ...</span>
     
-    <span class="n">feat_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;AZDIAS_Feature_Summary.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+    
+    <span class="n">feat_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;AZDIAS_Feature_Summary.csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
     
     
     
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat_info</span><span class="p">)):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">To_list</span><span class="o">=</span><span class="nb">eval</span><span class="p">(</span><span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
-            <span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">To_list</span>
+        <span class="n">string</span><span class="o">=</span><span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">List</span><span class="o">=</span><span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
         
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">string</span><span class="o">=</span><span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="n">List</span><span class="o">=</span><span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="n">manual_list</span><span class="o">=</span><span class="p">[]</span>
         
-            <span class="n">manual_list</span><span class="o">=</span><span class="p">[]</span>
-        
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">List</span><span class="p">:</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="n">x</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-                    <span class="n">manual_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-                <span class="k">except</span><span class="p">:</span>
-                    <span class="n">manual_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-            <span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">manual_list</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">List</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">x</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                <span class="n">manual_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">manual_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+        <span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">manual_list</span>
 
     
     
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat_info</span><span class="p">)):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">feat_info</span><span class="p">[</span><span class="s2">&quot;missing_or_unknown&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]:</span>
             <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+            
+    
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total number of missing values after conversion is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
         
     
     <span class="c1"># remove selected columns and rows, ...</span>
@@ -16572,8 +16599,6 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
     
     <span class="n">new_subset1</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
-    
-    <span class="n">new_subset1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CAMEO_DEUG_2015_X&quot;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="c1"># Return the cleaned dataframe.</span>
     
@@ -16682,7 +16707,7 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[187]:</div>
+<div class="prompt input_prompt">In&nbsp;[235]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If you&#39;ve not yet cleaned the dataset of all NaN values, then investigate and</span>
@@ -16699,7 +16724,7 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[214]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Apply feature scaling to the general population demographics data.</span>
@@ -16714,7 +16739,7 @@ Since the tens of the values correspond to wealth, we replace each bunch of tens
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[305]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_ss</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_ss</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">subset1</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
@@ -16751,7 +16776,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[190]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Apply PCA to the data.</span>
@@ -16766,7 +16791,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[191]:</div>
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_pca</span><span class="o">.</span><span class="n">shape</span>
@@ -16782,7 +16807,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[191]:</div>
+    <div class="prompt output_prompt">Out[74]:</div>
 
 
 
@@ -16799,7 +16824,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[192]:</div>
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Investigate the variance accounted for by each principal component.</span>
@@ -16832,7 +16857,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[193]:</div>
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scree_plot</span><span class="p">(</span><span class="n">pca</span><span class="p">)</span>
@@ -16867,7 +16892,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[194]:</div>
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Re-apply PCA to the data while selecting for number of components to retain.</span>
@@ -16882,7 +16907,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[195]:</div>
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scree_plot</span><span class="p">(</span><span class="n">pca</span><span class="p">)</span>
@@ -16904,7 +16929,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAm0AAAGDCAYAAAB5rSfRAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4wLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvpW3flQAAIABJREFUeJzs3Xl4lOW5x/HvnYSwhLAmYQ2EPSCLSAAXXBAXBBHbY91q3Vp7bGtta7Va66nW2tPltFXbWmtrXeq+VYu7ooDixiIgEBJ2SIBsrGHLep8/ZrBjmoQJZDKZ5Pe5rrmYd9533rlnsv14nvd5HnN3RERERKR5i4t2ASIiIiJyeAptIiIiIjFAoU1EREQkBii0iYiIiMQAhTYRERGRGKDQJiIiIhIDFNpEmpCZPWJmd4V57OtmdkUEasgwMzezhMY+dx2v18/M9ppZfFO8Xqwxs6+a2VuNcJ6VZnZaI5znSjObf7TnEZHGp9AmUgsz22hmB4Jh49DtT01Zg7uf4+6PNuVrmtmbZnZnLY/PNLOCIwl67r7Z3Tu6e1XjVHn0anx9C83sYTPr2EjnvsPMKoLn3mVmH5rZCXUd7+5PuPtZR/u67n6Mu8892vMcjpklBt/jGjPbF/wsHzKzjEi/dnNgZqeZWX6065DWSaFNpG4zgmHj0O26aBfUBB4BvmZmVuPxrwFPuHtlQ07WVK15R2iGu3cEjgPGA7c19AT1vL9ngudOBeYD/6zlM23un09dngfOAy4FOgNjgMXAlGgWJdIaKLSJNJCZ3W9mz4ds/9rM3rGA08ws38xuNbOSYCvEV+s4T1cze8XMis1sZ/B+35D9c83sG8H7V5rZfDP7bfDYDWZ2Tsixnc3s72a2zcy2mNldh7ojzSw++LwSM1sPTK/n7b0EdANODq0TOBf4R3B7upktMbM9ZpZnZneEHHuo6/XrZrYZeLdmd6yZXWVmq8ys1MzWm9l/hzz/0Of3QzMrCr6fq0L2tzez35nZJjPbHfxM2gf3HR9s1dplZsvC7Sp09y3A68DIMD7LK83sAzO728x2AHfUfWZw9wrgUaAn0L2251uN7sjgZ3VtsCVrp5ndFxr4zOyakM8v28yOCz6+0czOCN6/w8yeN7Nngsd9amZjQs5xi5mtCznHl8L5rILnPxOY6e4L3b3S3Xe7+33u/vfgMb3NbJaZ7TCztWZ2Tcjz7zCz58zs8eBrLzezoWb24+DXO8/Mzgo5fq6Z/dLMFgS/3v8ys24h+8+zQLfwruCxw0P2bTSzG83ss+BznzGzdiH7zzWzpfbv1tDRh3uumSUR+F7pbf9uge8dzmcn0hgU2kQa7ofA6OAf25OBrwNX+L/XhOsJpAB9gCuAv5rZsFrOEwc8DPQH+gEHgPq6YCcCucFz/wb4e8gf80eBSmAwMBY4C/hGcN81BELXWCALuKCuF3D3A8CzwOUhD18I5Lj7suD2vuD+LgQC4LfM7PwapzoVGA6cXcvLFAXr6QRcBdx9KHgE9STQgtOHwGd7nwWCI8BvgXHAiQTC5Y+AajPrA7wK3BV8/EbgBTNLreu9HmJm6cA0YEnwofo+Swh8HdYDacAvDnPutsCVQL67lzTg+ecSaP0bQ+DzPzt4vq8QCIqXE/j8zgO213GOmcBzBD6PJ4GXzKxNcN86AsG8M/Az4HEz61Xfewk6A1jg7nn1HPMUkA/0JvC99r9mFtoKNwN4DOhK4DN/k8DPQh/gTuCBGue7HLg6eL5K4A8AZjY0+FrfJ9Ci+Rrwspklhjz3QmAqMAAYTeBrQfD77SHgv4HuwdecFfx61flcd98HnANsDWmB31rPZyHSuNxdN910q3EDNgJ7gV0ht2tC9k8AdgCbgEtCHj+NwB+WpJDHngX+J3j/EeCuOl7zWGBnyPZc4BvB+1cCa0P2dQCcQMDpAZQB7UP2XwLMCd5/F7g2ZN9Zwecm1FHHJGD3ofMBHwA/qOezuge4O3g/I3jugSH7Mw7zei8B3wv5/A6EHksg5B1P4A/7AWBMLee4GXisxmNvEgjTh/v6bgL+DLQP47O8Eth8mO+dO4Dy4LmLgp//uLqeH3xsfsi2A5NqfP/cEvKevlfPezojpIaPQ/bFAduAk+t47lICrWf/UU+N4/4GPF3Pe08HqoDkkMd+CTwSUtfbIftmBL8O8cHt5OD77xLyM/CrkONHBD/beOB/gGdrvMctwGkhn8dlIft/A/wleP9+4Oc1as8FTg3juacRCOFR/z2lW+u7xeL1FCJN5Xx3n13bDndfYIGuxjQCf1RD7fTA/8gP2USgleALzKwDcDeB/80faklKNrN4r/2i/YKQ198fbGTrSKAlpQ2wLaQXLQ441BrSO+T+oXrq5O7zzawYmGlmCwi0+Hw5pO6JwK8IdCcmAm0JtOiEqrMlxgLdurcDQ4N1dgCWhxyy3b947dz+4PtMAdoRaCWqqT/wFTObEfJYG2BO3e/0P7++ZjaK+j9LqOe9hXjW3S+rY184zy8IuX/o/UMgFNX2/ut9HXevtsDF870BzOxy4AYCgRr+/fkeznYCX7e69AZ2uHtpyGObCLTwHlIYcv8AUBLy/X4gpJ5dNd9H8FxtgrX2JuR7Ofge8wi02B1S83M89HPYH7jCzL4bsj+RL/6c1vVckahR96jIETCz7xAIK1sJdNGF6hq89uWQfsHjavohMAyY6O6dgFMOnb6B5eQRaB1KcfcuwVsndz8muH8bgT/2ofUczj8IdEt9DXjL3UP/0D4JzALS3b0z8JdaanZqEex+eoFAN2cPd+9CoFsrnPdcAhwEBtWyL49AS1uXkFuSu/8qjPPWPE99nyXU8d4a4Gien0ft7782n3/NzSwO6AtsNbP+BFrMrgO6B78GKwjvazAbmGAh117WsBXoZmbJIY/1I9ACdqRqfu9WEPhe2EogfAEQvFQgPczXygN+UeP7pYO7PxXGc4/26y9yxBTaRBooeC3NXcBlBELNj8zs2BqH/cwCUyOcTOD6pJotURDoCjoA7ApeXH37kdTj7tuAt4DfmVknM4szs0FmdmrwkGeB682sb/DasFvCOO0/CFy/dA2Ba7xq1r3D3Q+a2QQCowjDdahlrhioDLa6hTXdhbtXE7gO6ffBi93jzeyEYBB8HJhhZmcHH29ngUENdYWLul7jcJ9ltD0I3Ghm4yxgcDCE1WacmX3ZAgNAvk8gjH4MJBEIHsUQGBhCcBDG4QRbJt8GXgzWkGBmyRYYOHG1B651+xD4ZfBrMJrAdYlPHMV7vszMRgRbpu8Eng+2zD0LTDezKcFr9X4YfI8fhnHOvwHXmtnE4OeYZIEBNsmHfWagpbC7mXU+wvcjcsQU2kTq9rJ9cZ62F4N/AB8Hfu3uy9x9DXAr8FjIRcwFwE4CLQFPELieLKeW899D4DqqEgJ/TN84ilovJxCIsoOv/Txw6MLyvxG4FmoZ8Cnwz8OdzN03Evjjl0SgVS3Ut4E7zawU+Cn/2T1c33lLgeuDz9lJIPDVPH99biTQlbqQwDWFvwbigmFhJoGvRTGBlpSbOLLfcfV9llHl7s8RGLzwJFDKv0f71uZfwEUE3sPXgC+7e4W7ZwO/Az4iEEBGEbhuMVwXEGgdfYbAtY8rCHR/HupqvoRAt+tW4EXgdnd/uwHnr+kxAteCFhDoHr8ewN1zCfzH6Y8EfoZmEJjGpfxwJ3T3RQT+Q/InAp/PWoKDFMJ4bg6BARDrgyNP1W0qTcbc1dIr0lgsMM3E4+7eoBYekcZkgWlYBtdzXV1MMLO5BH6eHox2LSLNgVraRERERGKAQpuIiIhIDFD3qIiIiEgMUEubiIiISAxQaBMRERGJAS1yRYSUlBTPyMiIdhkiIiIih7V48eISdz/sWsktMrRlZGSwaNGiaJchIiIiclhmVu/ygoeoe1REREQkBii0iYiIiMQAhTYRERGRGKDQJiIiIhIDFNpEREREYoBCm4iIiEgMUGgTERERiQEKbSIiIiIxQKFNREREJAYotImIiIjEAIU2ERERkRig0CYiIiISA1rkgvEiIiIi4aqudnIKSpm/tpiyimq+O2VItEuqlUKbiIiItDoFuw/y/ppi5q8t4YO1JZTsLQdgXP+uCm0iIiIi0bK/vJJP1u/gvTXFzF9TwpqivQCkdEzkpMEpTBqcwqQhKfTq3D7KldZNoU1ERERanOpqJ3vbHt5fU8L7a4pZtHEn5VXVtE2IY8KAblwwri8nD0kls2cycXEW7XLDotAmIiIiLULRnoOfh7T5IV2emT2TufKkDE4eksL4jG60axMf5UqPjEKbiIiIxKSyyioWbdzJe6uLmbe6mJyCUiDQ5TlpcAonD0nl5CEppHVqF+VKG4dCm4iIiMQEd2d9yT7eW13Me6uL+Xj9Dg5UVNEm3sjq342bp2Zy8pAURvTqFDNdng2h0CYiIiLN1t6ySj5cW8K8YGta/s4DAAxISeLCrL6cMjSV4wd2J6lty480Lf8dioiISMxwD8yZNm91MfNyi1m0aQcVVU5SYjwnDk7hv08dxGlDU0nv1iHapTY5hTYRERGJqt0HKvhgbQlzc4uYt7qYwj1lQGAAwdWTBnDq0FSy+ncjMaF1L+QU0dBmZlOBe4F44EF3/1WN/f2AR4EuwWNucffXIlmTiIiIRJe7s3Lrns9b0xZv3klVtZPcLoGTh6Rw2tA0ThmaSs/OLWMAQWOJWGgzs3jgPuBMIB9YaGaz3D075LDbgGfd/X4zGwG8BmREqiYRERGJjt37K3h/bTFzcwPXphWXBlrTjundiWtPHchpw9IYm96FhPjW3ZpWn0i2tE0A1rr7egAzexqYCYSGNgc6Be93BrZGsB4RERFpIu6ByW3n5hYzN7eITzfvoqra6dy+TaA1bVgapwxNIS1ZrWnhimRo6wPkhWznAxNrHHMH8JaZfRdIAs6o7URm5g154XHjxjXkcBEREWkEew5WMH9NCXNyAtemFQVb00b26cS3Th3E5MxUxvRVa9qRimRoq22ClJrh6xLgEXf/nZmdADxmZiPdvTqCdYmIiEgjcHfWFO1lTk4Rc3KLWLRxJ5XVTqd2CZw8NJXThqZy6rBUtaY1kkiGtnwgPWS7L//Z/fl1YCqAu39kZu2AFKAo9CB3b9AMeVlZWQ1qmRMREZHw7C+v5MO125mTW8Tc3GK27ArMm5bZM5lvnjKQyZm6Ni1SIhnaFgJDzGwAsAW4GLi0xjGbgSnAI2Y2HGgHFEewJhEREWmgzdv3Mye3iHdzivho/XbKK6vpkBjPpMEpXHf6YE4blkqvzu2jXWaLF7HQ5u6VZnYd8CaB6TwecveVZnYnsMjdZwE/BP5mZj8g0HV6pburlUxERCSKKqqqWbhxB3NyAkFtXfE+ILAKwWUT+zM5M5UJA7rRNiE2F16PVdYSM1JWVpYvWrQo2mWIiIjEjJK9ZczNLWZOThHvrSmm9GAlbeKNiQO6MzkzjdMz0xiQkhTtMlskM1vs7lmHO04rIoiIiLRChya4fTfYmrYsfxfukJrclmkjezE5M41JQ1Lo2ArW9IwV+kqIiIi0EvvLK/lg7XbezSnk3ZwiCveUYQaj+3bh+1OGcnpmGsf07kRcXIPG/0kTUWgTERFpwfJ37mdOThHv5BTx4brAIIKObRM4ZWgKk4elcdqwNFKT20a7TAmDQpuIiEgLUlXtLM3byTurAt2eOQWlAGR078DXju/PlMw0sjK0+HosUmgTERGJcXvLKnlvdTGzVxUyN7eYHfvKSYgzxmd047bpwzk9M42BqR2jXaYcJYU2ERGRGJS3Yz/vrCrknZwiPl6/nYqqwLqek4elMmV4D04Zmkrn9m2iXaY0IoU2ERGRGFBd7SzL38U7q4qYvarw827PgalJXHXSAKZkpjGuf1etRNCCKbSJiIg0UwfKq5i/toTZ2YEWtZK9ZcTHGeMzunLb9OFMGd5Dc6e1IgptIiIizUjRnoO8k1PE7OxC5q8toayymuS2CZw6LJUzR/Tg1KGpdOmQGO0yJQoU2kRERKLI3ckpKGV2diGzc4pYlrcLgL5d23PJhH6cOaIH4zXaU1BoExERaXLlldUs2LCD2asKeTu7kC27DgBwbHoXbjp7GGcM78HQHh0x0yS38m8KbSIiIk1g94EK5uYW8XZ2IfNyiyktq6RdmzgmDU7lu6cP5vThaaQlt4t2mdKMKbSJiIhESN6O/Z+3pi3YsIPKaielYyLTRvXijBE9mDQ4hfaJ8dEuU2KEQpuIiEgjcXeWb9nN29mBoHZoWo4haR255pSBnDmiB8f27aK1PeWIKLSJiIgchbLKKj5at53ZqwqZnV1EwZ6DxBlkBVcjOGN4DzI0LYc0AoU2ERGRBtq9v4I5h65PW13M3rJKOiTGc8qQVM4Y0YPTM9PolqRpOaRxKbSJiIiEYeuuA593e368fnvw+rS2zBjTizNH9ODEQSm0a6Pr0yRyFNpERERq4e7kFpby9spC3souZPmW3QAMSk3iGycHrk8bm67r06TpKLSJiIgEVVU7n27eyVsrC3gru5BN2/cDMLZfF26emsmZI3owOK1jlKuU1kqhTUREWrWDFYGBBG+uLGD2qkJK9pbTJt44cVAK15w8kLNG9CCtk+ZPk+hTaBMRkVZnz8EK5uQU8VZ2IXNzithXXkXHtgmcNiyVs47pyeRhqSS3axPtMkW+QKFNRERaheLSMt7OLuTNlQV8uK6EiqrAQILzju3DWcf04MRB3WmboIEE0nwptImISIu1eft+3lxZwJsrC1i8eSfu0K9bB648MYOzj+nJ2H5diddAAokRCm0iItJiuDurC/fyxooC3lhZwKptewAY3qsT35syhLOP6Ulmz2QtxC4xSaFNRERimruzLH83b6wItKhtKNmHGWT178pt04dz9jE9Se/WIdplihw1hTYREYk5VdXOwo07Pg9q23YfJCHOOGFQd75x8gDOHNGDtGSN+JSWRaFNRERiQkVVNR+t287rKwp4O7uAkr3ltE2I45Shqdx09jCmZPagcweN+JSWS6FNRESarYMVVcxfU8LrKwJzqO0+UEFSYjyTM9M4Z2QvThuWSlJb/SmT1iGi3+lmNhW4F4gHHnT3X9XYfzcwObjZAUhz9y6RrElERJq3/eWVzM0t5vUVBczJKWJvWSWd2iVwxogenDOyFycP0Rqf0jpFLLSZWTxwH3AmkA8sNLNZ7p596Bh3/0HI8d8FxkaqHhERab72HKzg3VVFvL5iG/NWF3OwopruSYnMGNOLqSN7ccLA7iQmxEW7TJGoimRL2wRgrbuvBzCzp4GZQHYdx18C3B7BekREpBnZtb+ct7ILeWNFAfPXlFBeVU1aclsuzEpn6sieTMjoRkK8gprIIZEMbX2AvJDtfGBibQeaWX9gAPBuHfu9IS88bty4hhwuIiJNZPveMt7KLuS15dv4aN12KqudPl3ac/kJ/TlnVE/GpnclTpPditQqkqGttp+6usLXxcDz7l4VwXpERCQKikoP8ubKQl5fvo2P12+n2qF/9w5cc8pAzhnZk1F9OmuyW5EwRDK05QPpIdt9ga11HHsx8J26TuTuDfppzsrKalDLnIiINK6C3Qd5Y8U2XltRwMKNO3CHQalJfGfyYM4Z2YvhvbQqgUhDRTK0LQSGmNkAYAuBYHZpzYPMbBjQFfgogrWIiEiEbd11gNdXFPD68m0s2rQTgGE9kvnelCFMH9WLIT2So1yhSGyLWGhz90ozuw54k8CUHw+5+0ozuxNY5O6zgodeAjzt7modExGJMfk79/P68gJeXb6NpXm7gMA6nzeeNZSpI3sxOK1jlCsUaTmsJWalrKwsX7RoUbTLEBFpkfJ37ue15dt4dXkBy4JBbWSfTpwzshfTRvViQEpSlCsUiS1mttjdsw53nKaRFhGRwzrUovbK8m1fCGo3T81k2qie9O+uoCYSaQptIiJSq627DvDa8m288tm/uz5H9unEj6YOY/qoXgpqIk1MoU1ERD5XuOfg50FtcXAwwTG9FdREmgOFNhGRVq6o9CBvrCjglWXbWLgpMD1HZs9kbjxrKNNH99Y1aiLNhEKbiEgrtGNfOa+v2MYry7bxyYbAhLdD0jry/SlDmT5aoz5FmiOFNhGRVmL3/greXFnAy59t5cN126mqdgamJHHd5MGcO6Y3QzWPmkizptAmItKC7S2r5O3sQNfne2uKqahy0ru155unDOTc0b0Y0auTViYQiREKbSIiLczBiirm5BQxa9lW3s0poqyymt6d23HliRmcO7o3o/tqrU+RWKTQJiLSAlRUVTN/TQkvL9vKW9mF7C2rJKVjIhePT2fGmN4c168rcXEKaiKxTKFNRCRGVVc7izbt5KWlW3ht+TZ27a+gU7sEpo/qxYwxvTl+YDcS4uOiXaaINBKFNhGRGJNbUMpLS7cwa+lWtuw6QPs28Zw5ogczxvTmlKEptE2Ij3aJIhIBCm0iIjFg2+4DzFq6lZeWbmXVtj3ExxknD0nhprOHceaIHiS11a9zkZZOP+UiIs3U7gMVvLFiGy8t2crHG7bjDsemd+GOGSM4d0xvUjq2jXaJItKEFNpERJqRssoq5uYW89KSLbyTU0R5ZTUDU5L4/pShzDy2NxlanUCk1VJoExGJsupqZ+HGHby0dCuvLd/G7gMVpHRM5NIJ/fjS2D6aokNEAIU2EZGoWVe8lxc/3cKLS7Z8PqBg6siezDy2N5MGp2jkp4h8gUKbiEgT2rGvnJeXbeWfS7awLG8XcQaThqRy49lDOWtETw0oEJE66beDiEiElVVW8e6qIl74dAtzc4uorHaG9+rET6YNZ+axvUnr1C7aJYpIDFBoExGJAHdn5dY9PLcoj38t28qu/RWkJbfl6kkD+NLYPgzv1SnaJYpIjFFoExFpRDv2lfPSki08uyiPnIJSEhPiOPuYnlwwri+TBqcQr6WkROQIKbSJiBylyqpq3ltTzLML83knp5CKKmd03878fOYxnDemD507tIl2iSLSAii0iYgcoXXFe3luUT7//DSfotIyuiclcvkJGXwlqy+ZPdX9KSKNS6FNRKQBSg9W8Opn23hucT6LN+0kPs6YPCyVC8alc3pmGokJmqZDRCJDoU1E5DDcnU827OC5Rfm8tnwbByqqGJzWkR+fk8mXjutDWrJGf4pI5Cm0iYjUoXDPQZ5fnM9zi/LYuH0/yW0TOH9sH76S1Zex6V20SoGINCmFNhGREBVV1czJKeLZRXnMyS2mqtqZOKAb108Zwjkje9E+MT7aJYpIK6XQJiICbCjZxzML83jh03yKS8tITW7LN08ZyIVZ6QzQIu0i0gwotIlIq3WwoorXV2zj6QV5fLJhR3BQQRoXjU9n8rBUrf0pIs2KQpuItDrZW/fwzMLNvLhkC3sOVtK/ewduOnsYF4zrSw8tKSUizVREQ5uZTQXuBeKBB939V7UccyFwB+DAMne/NJI1iUjrtLeskllLt/LMws0sy99NYnwcU0f25OIJ6Rw/oDtxWqlARJq5iIU2M4sH7gPOBPKBhWY2y92zQ44ZAvwYOMndd5pZWqTqEZHWx91ZkreLpxds5pXPtrG/vIphPZK5fcYIzj+2D12TEqNdoohI2CLZ0jYBWOvu6wHM7GlgJpAdcsw1wH3uvhPA3YtqO5GZeUNeeNy4cUdUsIi0DLv2l/Piki08vSCP3MJSOiTGM2N0by6ekM6xmqpDRGJUJENbHyAvZDsfmFjjmKEAZvYBgS7UO9z9jQjWJCItlLvz8fodPL1wM6+vKKC8spoxfTvzyy+PYsaY3nRsq0t4RSS2RfK3WG3/la3ZYpYADAFOA/oC75vZSHff9YUnuTfov8VZWVkNapkTkdhVsreM5xfn88zCPDaU7CO5XQIXj0/n4vH9GNFb63+KSMsRydCWD6SHbPcFttZyzMfuXgFsMLNcAiFuYQTrEpEYV13tzF9bwtMLN/N2diEVVc74jK5cN3kw00ZpAlwRaZkiGdoWAkPMbACwBbgYqDky9CXgEuARM0sh0F26PoI1iUgMK9xzkOcW5fHMojzydhyga4c2XHFCBhdPSGdwWnK0yxMRiaiIhTZ3rzSz64A3CVyv9pC7rzSzO4FF7j4ruO8sM8sGqoCb3H17pGoSkdhzqFXt8Y838U5OEVXVzomDunPT2ZmcfUwP2iaoVU1EWgdzr/vyLzPrS6CF7GSgN3AAWAG8Crzu7tVNUWRDZWVl+aJFi6JdhogchR37ynl+cR5PfLKZTdv30y0pka9k9eWS8f3I0LJSItKCmNlid8863HF1trSZ2cMERoC+AvwaKALaEejCnAr8xMxucff3GqdkEWnt3J1PN+/k8Y838+rybZRXVjM+oys3nDmUqSN7qlVNRFq1+rpHf+fuK2p5fAXwTzNLBPpFpiwRaU32l1fy0pKt/OOjjeQUlNKxbQIXZaXz1eP7kdlTI0BFRKCe0FZbYDOzQUAHd1/u7uXA2kgWJyIt24aSfTz20SaeW5xH6cFKhvfqxP9+aRQzj+1NkuZVExH5grB/K5rZrcAooNrMqt39a5ErS0RaqqpqZ25uEY9+tIn3VheTEGdMG9WLy0/oz7j+XbVagYhIHeq7pu27wJ/dvSr40Bh3vyi477OmKE5EWo5d+8t5ZmEej328ifydB+jRqS03nDmUiyekk5bcLtrliYg0e/W1tO0E3jCzP7j7y8BbZjYPiCMwVYeIyGFlb93Dox9u5KWlWyirrGbigG78+JzhnHVMD9rEx0W7PBGRmFHfNW2Pm9nzwE1m9g3gp8BTQBt3391UBYpI7KmoquatlYU8+uFGFmzcQbs2cXz5uL5ccWJ/DSwQETlCh7umbRDwDPA34OcE1g79KaDQJiL/YfveMp5asJnHP95MwZ6D9O3anlunZXJhVjpdOiRGuzwRkZhW3zVtjwT3twfWufs1ZjYW+JuZLXD3nzdRjSLSzK0uLOXv72/gxaVbKK+sZtLgFH5+/khOz0wjPk4DC0REGkN9LW1j3X0MgJktAXD3JcAMM5vZFMWJSPPl7ry3poQH31/P+2tKaNcmjgvG9eWqEzMY0kPrgIqINLb6QtsbwYEHicCToTvc/V8RrUpEmq2DFVW8tGQLf5+/gTVFe0lNbsuNZw3l0on96ZakLlBreG/YAAAgAElEQVQRkUipbyDCzWbWCah2971NWJOINEPb95bxj4828fjHm9i+r5wRvTrxu6+M4dwxvbS8lIhIE6jvmrbLgCfrWhQ+uDpCL3efH6niRCT6Npbs48H563luUT5lldVMyUzjGycP5PiB3TQRrohIE6qve7Q7sMTMFgOLgWICC8YPBk4FSoBbIl6hiETFks07+et763ljZQFt4uL40tg+XHPKAAan6Xo1EZFoqK979F4z+xNwOnASMBo4AKwCvubum5umRBFpKtXVzpzcIh6Yt54FG3fQqV0C3zp1EFeemEFaJ61aICISTfXO0xZcwurt4E1EWqiKqmpmLd3KX+atY03RXvp0ac//nDuCi8an01ELt4uINAv6bSzSih0or+LZRXn89b31bNl1gMyeydxz0bFMH91LS0yJiDQzCm0irdDu/RU89vFGHv5gI9v3lTOuf1funHkMp2emaXCBiEgzpdAm0ooUlR7k7+9v4IlPNrO3rJLThqXy7dMGM2FAt2iXJiIih1HflB831PdEd/9945cjIpGwddcBHpi3jqcW5lFZVc300b259tSBHNO7c7RLExGRMNXX0nZoXP8wYDwwK7g9A3gvkkWJSOPYvH0/989by/OL83GHLx/Xh2+fNpiMlKRolyYiIg1U35QfPwMws7eA49y9NLh9B/Bck1QnIkdkbdFe/jx3Lf9aupV4My4e34//PnUgfbt2iHZpIiJyhMK5pq0fUB6yXQ5kRKQaETkquQWl/PHdNby6fBttE+K48sQMvnnKQHpojjURkZgXTmh7DFhgZi8CDnwJ+EdEqxKRBlmxZTd/fHcNb64sJCkxnmtPHcTXJw0gpWPbaJcmIiKN5LChzd1/YWavAycHH7rK3ZdEtiwRCcfSvF388Z01vJNTRHK7BK6fMoSrT8qgS4fEaJcmIiKNLNwpPzoAe9z9YTNLNbMB7r4hkoWJSN0WbdzBH95dy3uri+nSoQ0/PHMoV5yUQad2baJdmoiIRMhhQ5uZ3Q5kERhF+jDQBnicwHqkItKEFm7cwd1vr+bDddvpnpTIzVMz+doJ/bXUlIhIKxDOb/ovAWOBTwHcfauZJdf/FBFpTIs37eSe2at5f00JKR3bctv04Vw6sR8dEhXWRERai3B+45e7u5uZA5hZ2BM8mdlU4F4gHnjQ3X9VY/+VwP8BW4IP/cndHwz3/CIt3bK8Xdw9ezVzc4vpnpTIT6YN57Lj+9M+MT7apYmISBMLJ7Q9a2YPAF3M7BrgauBvh3uSmcUD9wFnAvnAQjOb5e7ZNQ59xt2va2DdIi3aii27uWf2amavKqJLhzbcPDWTy0/oT5K6QUVEWq1wRo/+1szOBPYQuK7tp+7+dhjnngCsdff1AGb2NDATqBnaDutQK1+4xo0b19CXEGkW1haV8ts3V/PGygI6t2/DTWcP44oTM3TNmoiIhDd6NBjSwglqofoAeSHb+cDEWo77LzM7BVgN/MDd82o5RqRF27LrAPe8vZoXPs2nQ2IC3z9jCFdPGqDRoCIi8rlwRo9+Gfg1kAZY8Obu3ulwT63lsZotZi8DT7l7mZldCzwKnP4fT3Kv7Vx1ysrKalDLnEi07NhXzn1z1vLYR5vA4OqTBvDtyYPplqR51kRE5IvCaWn7DTDD3Vc18Nz5QHrIdl9ga+gB7r49ZPNvBMKhSIu3r6ySv8/fwF/fW8/+8kouGNeX750xlD5d2ke7NBERaabCCW2FRxDYABYCQ8xsAIHRoRcDl4YeYGa93H1bcPM84EheRyRmVFRV89SCzfzhnTWU7C3n7GN6cONZwxjSQ7PoiIhI/cIJbYvM7BngJaDs0IPu/s/6nuTulWZ2HfAmgSk/HnL3lWZ2J7DI3WcB15vZeUAlsAO48sjehkjzNze3iLteXcXaor1MHNCNv16eyXH9uka7LBERiRHmXv/lX2b2cC0Pu7tfHZmSjl5WVpYvWrQo2mWIALCmsJS7Xl3FvNXFZHTvwK3ThnPmiB6YNehSTRERaaHMbLG7Zx3uuHCm/LiqcUoSaV127ivnntmrefyTzXRIjOe26cO5/IQMEhPiol2aiIjEoDpDm5n9yN1/Y2Z/5D9HfeLu10e0MpEYVV5ZzWMfb+Le2avZW1bJpRP78YMzhtK9Y9tolyYiIjGsvpa2Q4MC1M8oEqb3Vhdzx8srWV+8j5OHpHDb9BEM66lBBiIicvTqDG3u/nLw30ebrhyR2JS3Yz8/fyWbt7IL6d+9Aw9ensWU4Wm6bk1ERBpNOJPrpgI3AyOAdoced/f/mARXpLU5UF7F/fPW8cC8dcSZcdPZw/j6pAG0a6MF3UVEpHGFM+XHE8AzwHTgWuAKoDiSRYk0d+7OGysKuOvVVWzZdYBzR/fi1mnD6a3JcUVEJELCCW3d3f3vZvY9d58HzDOzeZEuTKS5WltUyu2zVvLB2u1k9kzm6W8ez/EDu0e7LBERaeHCCW0VwX+3mdl0AktR9Y1cSSLN096ySv7wzhoemr+BDonx/Oy8Y/jqxH4kxGsKDxERibxwQttdZtYZ+CHwR6AT8IOIViXSjLg7L3+2jV+8mk3hnjIuzOrLzVMzNYWHiIg0qXAm130leHc3MDmy5Yg0L6sLS7n9Xyv5aP12RvbpxP2XjdPSUyIiEhX1Ta5b66S6h2hyXWnJ9pZVcu/s1Tz8wUaS2iZw1/kjuWRCP+LjNIWHiIhER30tbZpUV1odd+fV5dv4+SvZFJWWcVFWOj+amkm3pMRolyYiIq1cfZPrfmFSXTPrFHjYSyNelUgUbNq+j5/+ayXzVhczsk8n/nLZOMaqK1RERJqJcCbXzQIeBpIDm7YLuNrdF0e6OJGmUFZZxd/eW88f311Lm/g4bp8xgstPyFBXqIiINCvhjB59CPi2u78PYGaTCIS40ZEsTKQpfLx+Oz95cTnrivcxfVQv/ufcEfTs3O7wTxQREWli4YS20kOBDcDd55uZukglpm3fW8b/vpbDC5/mk96tPQ9fOZ7JmWnRLktERKRO4YS2BWb2APAUgdGkFwFzzew4AHf/NIL1iTQqd+eFT7dw16vZ7Cur5DuTB3Hd5CG0T9RaoSIi0ryFE9qODf57e43HTyQQ4rRwvMSEzdv3c+uLy5m/toSs/l355ZdHMaRHcrTLEhERCUs4k+tqQl2JaZVV1Tz8wUZ+93YuCXFx/Pz8kXx1Qj/iNNBARERiSDijRx8DrnP33cHt/sBD7j4l0sWJHK2VW3dzywvLWb5lN2cMT+Pn54+kV+f20S5LRESkwcLpHp0PfGJmNwB9gJsIrEMq0mwdrKji3nfW8Nf31tO1Qxvuu/Q4po3qiZla10REJDaF0z36gJmtBOYAJcBYdy+IeGUiR2jxpp3c9Nwy1pfs48Ksvtw6bThdOmhFAxERiW3hdI9+Dfgf4HICc7O9ZmZXufuySBcn0hBllVXcM3sND8xbR6/O7Xn86xOZNCQl2mWJiIg0inC6R/8LmOTuRcBTZvYi8Cj/HlUqEnXZW/dww7NLySko5aKsdG47dzjJ7dpEuywREZFGE0736Pk1theY2YTIlSQSvsqqah54bz33zF5Nlw6J/P2KLKYM7xHtskRERBpdXF07zOzZkPu/rrH7lYhVJBKmdcV7ueAvH/F/b+Zy1jE9eev7pyiwiYhIi1VfS9uQkPtnAjeHbKdGphyRw6uudh79aCO/fiOHdm3i+eMlY5kxpne0yxIREYmo+kKbH+E+kYjZsusANz23jA/XbWfysFR+/V+jSeukBd5FRKTlqy+0dTCzsQS6UNsH71vwFtbspGY2FbgXiAcedPdf1XHcBcBzwHh3X9SA+qWVOLRm6M9mraTanV9+eRQXj0/XvGsiItJq1BfatgG/D94vCLl/aLteZhYP3EegazUfWGhms9w9u8ZxycD1wCcNqFtakZK9Zdz6z+W8lV3IhIxu/PYrY+jXvUO0yxIREWlSdYa2RlhzdAKw1t3XA5jZ08BMILvGcT8HfgPceJSvJy3QWysL+PE/l1N6sJJbp2Xy9UkDideaoSIi0grVOXq0EfQB8kK284OPfS7Y5Zru7vWORjUzb8it8d+KNLU9Byu48bllfPOxxfTs3I6XvzuJb54ySIFNRERarXAm1z1Stf11/TxQmVkccDdwZQRrkBi0YMMOfvDMUgr2HOS7pw/mu6cPITEhkv+/EBERaf4iGdrygfSQ7b7A1pDtZGAkMDd4MXlPYJaZnVdzMIK7N6h5JSsrS61tMai8spp7Zq/m/nnr6NetA89dewLH9esa7bJERESahXDWHjXgq8BAd7/TzPoBPd19wWGeuhAYYmYDgC3AxcClh3a6+27g84UhzWwucKNGj7ZOa4v28oNnlrJ8y24uykrnpzNGkNQ2kv+nEBERiS3h/FX8M1ANnA7cCZQCLwDj63uSu1ea2XXAmwSm/HjI3Vea2Z3AInefdVSVS4vg7jz+yWZ+8Wo27dvE85fLxjF1ZM9olyUiItLshBPaJrr7cWa2BMDdd5pZYjgnd/fXgNdqPPbTOo49LZxzSstRXFrGj55fxpzcYk4ZmspvL9BEuSIiInUJJ7RVBOdccwAzSyXQ8iZyxN5ZVciPnv+M0rJK7pgxgstPyCBOI0NFRETqFE5o+wPwIpBmZr8ALgBui2hV0mIdrKjil6+t4tGPNpHZM5mnvnk8Q3skR7ssERGRZu+woc3dnzCzxcAUAtN4nO/uqyJembQ4uQWlXP/UEnILS7n6pAH8aOow2rWJj3ZZIiIiMSGc0aPHAyvd/b7gdrKZTXR3LTslYXF3Hvt4E3e9uopO7RJ45KrxnDYsLdpliYiIxJRwukfvB44L2d5Xy2Mitdq+t4wfPf8Z7+QUcdqwVP7vgjGkJreNdlkiIiIxJ5zQZu7++WS17l5tZppASw7r/TXF3PDsMnbvr+D2GSO48sQMghMpi4iISAOFE77Wm9n1BFrXAL4NrI9cSRLrKqqq+f3bq7l/7joGp3Xk0asmMKJ3p2iXJSIiEtPCCW3XEhhBehuBaT/eAb4ZyaIkdm3ddYDvPrWExZt2cvH4dG6fcQztEzXYQERE5GiFM3q0iMASVCL1mp1dyI3PL6Oispp7Lz6Wmcf2iXZJIiIiLUY4o0dTgWuAjNDj3f3qyJUlsaS8sprfvJHDg/M3MKJXJ+776nEMSEmKdlkiIiItSjjdo/8C3gdmA1WRLUdiTd6O/Vz31BKW5e3i8hP6c+u04Zp7TUREJALCCW0d3P3miFciMeeNFdu46fnPALj/q8dxzqheUa5IRESk5QontL1iZtOCi7+LUFZZxS9fy+GRDzcypm9n/njJcfTr3iHaZYmIiLRo4YS27wG3mlkZUEFgKSt3d83h0Arl7djPdU9+yrL83Vx1UgY/Pmc4iQlx0S5LRESkxQtn9KhW8xYA3lxZwE3PLcOBv1w2jqkje0a7JBERkVYjrJUNzKwrMARod+gxd38vUkVJ81JeWc2v38jh7/M3MLpvZ+679DjSu6k7VEREpCmFM+XHNwh0kfYFlgLHAx8Bp0e2NGkOQkeHXnliBj+elknbBI0OFRERaWrhXtM2HvjY3SebWSbws8iWJc3B7OxCbnh2Ke7w568exzSNDhUREYmacELbQXc/aGaYWVt3zzGzYRGvTKKmMrh26J/nrmNkn07cd+lx9O+uyXJFRESiKZzQlm9mXYCXgLfNbCewNbJlSbSU7C3j+qeW8OG67VwyoR+3zxihyXJFRESagXBGj34pePcOM5sDdAbeiGhVEhVLNu/k2098yo595fzmgtFcmJUe7ZJEREQkqM7QZmad3H2PmXULeXh58N+OwI6IViZNxt15/ONN3PlKNj07t+OFb53IyD6do12WiIiIhKivpe1J4FxgMeAEJ9UN+XdgxKuTiNtfXslPXlzBi0u2cHpmGndfeCydO7SJdlkiIiJSQ52hzd3PNTMDTnX3zU1YkzSRjSX7uPbxxeQWlvLDM4fyncmDiYuzaJclIiIitaj3mjZ3dzN7ERjXRPVIE/lgbQnfenwx8XHGo1dN4JShqdEuSUREROoRzqKRH5vZ+IhXIk3miU82cflDC+jZuR2zrpukwCYiIhIDwpnyYzLw32a2CdjHvxeMHx3RyqTRVVZV84vXVvHwBxuZPCyVP1wyluR2un5NREQkFoQT2s6JeBUScXsOVvDdJ5cwb3UxX580gFunDSde16+JiIjEjHDmadsEYGZphCwYL7Fj0/Z9fP3RRWws2ccvvzyKSyb0i3ZJIiIi0kCHvabNzM4zszXABmAesBF4PZyTm9lUM8s1s7Vmdkst+681s+VmttTM5pvZiAbWL4fxyfrtnH/fBxSXlvGPr09QYBMREYlR4QxE+DlwPLDa3QcAU4APDvckM4sH7iPQvToCuKSWUPaku49y92OB3wC/b0jxUr+Xlmzhsr9/QtekRF76zkmcOCgl2iWJiIjIEQontFW4+3Ygzszi3H0OcGwYz5sArHX39e5eDjwNzAw9wN33hGwmEZi09z+YmTfkFkZtLd5TCzbzg2eXMq5/V1781kkMSNGC7yIiIrEsnIEIu8ysI/Ae8ISZFQGVYTyvD5AXsp0PTKx5kJl9B7gBSAROD+O8chiPfLCBO17O5rRhqfzlsnFa8F1ERKQFCKelbSZwAPgBgYXi1wEzwnhebUMT/6MVzN3vc/dBwM3AbbWdyN2tIbcwamux/jJvHXe8nM1ZI3rwwNcU2ERERFqK+haM/xOBa84+DHn40QacOx9ID9nuC2yt5/ingfsbcH4J4e7c+84a7pm9hhljevP7C8fQJj6cTC4iIiKxoL6/6muA35nZRjP7tZmFcx1bqIXAEDMbYGaJwMXArNADzGxIyOb04GtKA7k7v34jl3tmr+GCcX2556JjFdhERERamDr/srv7ve5+AnAqsAN42MxWmdlPzWzo4U7s7pXAdcCbwCrgWXdfaWZ3mtl5wcOuM7OVZraUwHVtVxztG2pt3J2fvZzNX+at46sT+/Gb/xqtSXNFRERaIHMPf7ClmY0FHgJGu3uzvVgqKyvLFy1aFO0yIq662vnJSyt4asFmrj5pAP9z7nDMFNhERERiiZktdveswx0XzuS6bcxshpk9QWBS3dXAfzVCjXKU7n1nDU8t2Mx3Jg9SYBMREWnh6huIcCZwCYFrzRYQGCjwTXff10S1ST0WbtzBH99dw5fH9uHGs4YpsImIiLRw9c3TdivwJHCju+9oonokDLsPVPD9p5fSt2sH7jx/pAKbiIhIK1BnaHP3yU1ZiITH3fnJi8sp2HOQ5689gY5tw5kfWURERGKd5oWIMS98uoVXPtvGDWcOZWy/rtEuR0RERJqIQlsM2Viyj9v/tYKJA7px7amDol2OiIiINCGFthhRUVXN955eQnyccfdFx2ouNhERkVZGF0TFiLvfXs2y/N38+avH0btL+2iXIyIiIk1MLW0x4KN127l/3jouykpn2qhe0S5HREREokChrZnbtb+cHzyzlAHdk/jpjBHRLkdERESiRKGtGXN3bnlhOdv3lXHvxWNJ0vQeIiIirZZCWzP2xooC3lhZwI1nDWNU387RLkdERESiSKGtmTpYUcX/vr6KzJ7JfOPkgdEuR0RERKJMoa2ZeuTDjeTtOMBt00doeg8RERFRaGuOSvaW8ad313J6ZhqThqREuxwRERFpBhTamqG7317NwYoqbp02PNqliIiISDOh0NbM5BaU8tSCzVx2fH8Gp3WMdjkiIiLSTCi0NSPuzl2vZpPcrg3fmzIk2uWIiIhIM6LQ1ozMzS3m/TUlXD9lCF2TEqNdjoiIiDQjCm3NREVVNXe9ms2AlCS+dnz/aJcjIiIizYxCWzPx5CebWVe8j1unDScxQV8WERER+SKlg2Zg9/4K7p69mhMHdeeM4WnRLkdERESaIYW2ZuAP765h94EKbps+AjNNpCsiIiL/SaEtyjaU7OMfH23koqx0RvTuFO1yREREpJlSaIuy/31tFYnxcdxw1tBolyIiIiLNmEJbFC3N28Xb2YV867RBpCW3i3Y5IiIi0owptEXRn95dQ5cObbjypAHRLkVERESaOYW2KFm5dTezVxVx9UkD6Ng2IdrliIiISDMX0dBmZlPNLNfM1prZLbXsv8HMss3sMzN7x8xazayy981ZS3LbBK44MSPapYiIiEgMiFhoM7N44D7gHGAEcImZjahx2BIgy91HA88Dv4lUPc3JmsJSXl9RwBUnZtC5fZtolyMiIiIxIJItbROAte6+3t3LgaeBmaEHuPscd98f3PwY6FvbiczMG3KL4HtqFPfNWUv7NvFcPUnXsomIiEh4Ihna+gB5Idv5wcfq8nXg9QjW0yxsLNnHrGVbuez4/nTTovAiIiISpkiGttqm9q+1FczMLgOygP+rbb+7W0NujfgeGt2f566lTXwc3zhZrWwiIiISvkgOW8wH0kO2+wJbax5kZmcAPwFOdfeyCNYTdfk79/PPT7dw2fH9NS+biIiINEgkW9oWAkPMbICZJQIXA7NCDzCzscADwHnuXhTBWpqFv8xbhxl885SB0S5FREREYkzEQpu7VwLXAW8Cq4Bn3X2lmd1pZucFD/s/oCPwnJktNbNZdZwu5hXuOcizC/O5YFw6vbu0j3Y5IiIiEmMiOquru78GvFbjsZ+G3D8jkq/fnDwwbz1V7nzr1EHRLkVERERikFZEaAIle8t4csEmZh7bm37dO0S7HBEREYlBCm1N4MH3N1BWWc13Jg+OdikiIiISoxTaImzX/nIe+2gj00f1YlBqx2iXIyIiIjFKoS3CHvpgI/vKq7judLWyiYiIyJFTaIug6mrnyU82c8bwNDJ7dop2OSIiIhLDFNoiaPmW3ZTsLWP66F7RLkVERERinEJbBL2bU4QZnDo0LdqliIiISIxTaIugOblFjE3vooXhRURE5KgptEVIcWkZn+Xv5vRMtbKJiIjI0VNoi5C5uYGlVCcrtImIiEgjUGiLkDm5RfTo1JYRvTRqVERERI6eQlsEVFRV8/7qEiYPS8PMol2OiIiItAAKbRGwcOMOSssq1TUqIiIijUahLQLm5BSRGB/HpMEp0S5FREREWgiFtgiYk1vMxIHdSGqbEO1SREREpIVQaGtkeTv2s7ZoL5OHqWtUREREGo9CWyN7N0dTfYiIiEjjU2hrZO/mFDEgJYkBKUnRLkVERERaEIW2RrS/vJKP1m9X16iIiIg0OoW2RvTRuu2UV1Zr6SoRERFpdAptjejdnCKSEuMZP6BrtEsRERGRFkahrZG4O3NyijhpcAptE+KjXY6IiIi0MAptjSS3sJStuw+qa1REREQiQqGtkWiqDxEREYkkhbZGMjenmGN6d6JHp3bRLkVERERaIIW2RrB7fwWLN+9U16iIiIhEjEJbI5i3ppiqalfXqIiIiESMQlsjmJNTRLekRMb07RLtUkRERKSFimhoM7OpZpZrZmvN7JZa9p9iZp+aWaWZXRDJWiKlqtqZm1vEqUNTiY+zaJcjIiIiLVTEQpuZxQP3AecAI4BLzGxEjcM2A1cCT0aqjkhblr+Lnfsr1DUqIiIiEZUQwXNPANa6+3oAM3samAlkHzrA3TcG91VHsI6ImpNTRHycceqQ1GiXIiIiIi1YJENbHyAvZDsfmHgkJzIzb8jx48aNO5KXaZCMW179wvaYO98CYOOvpkf8tUVERKT1ieQ1bbVd4NWg8CUiIiIiAZEMbflAesh2X2DrkZzI3a0ht0apXkRERKQZiWRoWwgMMbMBZpYIXMz/t3f/sX7V9R3Hn6+1KIhOBrIf/Ngq0ohgaCtYrCBhDDf8EYsbpGzOyDZdlsgm2YxxywKIMRlx2UY2txgrUwlzsEqlmQRk/BDmMsqvYnutTECYN0W6IQxlTEL73h/nc7cvt/d+by+339576PORNPecz/mccz7fT+/55n0/n3POGzaM8HySJEkvWiML2qrqOeB84AZgK3B1VY0luSTJuwCSvDHJOHAO8OkkY6NqjyRJUp+N8kEEquo64LpJZRcOLN9JN20qSZKkIcyIIEmS1AMGbZIkST1g0CZJktQDBm2SJEk9YNAmSZLUAyN9enRfNjnN1QTTXEmSpBfCkTZJkqQeMGiTJEnqAYM2SZKkHjBokyRJ6gGDNkmSpB4waJMkSeoBgzZJkqQeMGiTJEnqAYM2SZKkHjBokyRJ6gHTWM0T01xJkqTZcKRNkiSpBxxpW4CmG4UDR+IkSdpXOdImSZLUAwZtkiRJPeD0aA85fSpJ0r7HkTZJkqQeMGiTJEnqAadHX4R8B5wkSS8+Bm37IIM6SZL6x6BNu5gpqBu2faaHJOZy7D2xXZKkvjJo0z5lIQeckiQNM9KgLcmZwGXAImBtVf3JpO0vBb4AnAA8DqypqodH2SZpoXqxjnD6ihpJ2jNGFrQlWQR8CngrMA7cmWRDVX1zoNpvAU9U1dFJzgUuBdaMqk2SFp4+B5y2fTTbF3LbZtq+kNs+198Jzb9RjrStBB6oqocAkvw9sBoYDNpWAxe35XXAXyVJVdUI2yVJkmapzwHni+X2lVG+p+1w4LsD6+OtbMo6VfUc8F/AIZMPlKRm829En0eSJGneZFSDWknOAX6pqt7f1t8LrKyq3x2oM9bqjLf1B1udxycda7aN/E/gkbm0X5IkaS/5uao6dKZKo5weHQeOHFg/Atg2TZ3xJIuBVwLfn3ygqsqoGilJktQHo5wevRNYmuTVSV4CnAtsmFRnA/C+tnw2cLP3s0mSJO1qZCNtVfVckvOBG+he+XF5VY0luQS4q6o2AJ8FrkjyAN0I27mjao8kSVKfjeyeNkmSJO05o5welSRJ0h5i0CZJktQDBm1zlOTMJPcneSDJR+e7PQtVksuTbE+yZaDs4CQ3Jvl2+/kT89nGhSjJkUluSbI1yViSD7Vy+26IJPsn2ZjkvtZvH2vlr05yR+u3q9pDUpokyaIk9yb5x7Zuv0h1eiwAAAdNSURBVO2GJA8n2ZxkU5K7WpnX6gySHJRkXZJvte+6Vfbb1Aza5mAgVdfbgGOBX01y7Py2asH6HHDmpLKPAjdV1VLgprau53sO+IOqeh3wJuCD7XfMvhvuR8DpVbUMWA6cmeRNdKny/rz12xN0qfS0qw8BWwfW7bfd9/NVtbyqTmzrXqszuwy4vqqOAZbR/e7Zb1MwaJub/0vVVVXPAhOpujRJVd3Gru/gWw18vi1/HjhrrzaqB6rq0aq6py3/gO7L7HDsu6Gq88O2ul/7V8DpdCnzwH6bUpIjgHcAa9t6sN/mwmt1iCQ/DpxK9zYJqurZqnoS+21KBm1zszupujS9n6qqR6ELToCfnOf2LGhJlgArgDuw72bUpvg2AduBG4EHgSdbyjzwep3OXwAfAXa29UOw33ZXAV9NcneS325lXqvDHQX8B/C3bUp+bZIDsd+mZNA2N1NlavAdKtrjkrwc+BJwQVU9Nd/t6YOq2lFVy+mysawEXjdVtb3bqoUtyTuB7VV192DxFFXtt6mdXFVvoLtl5oNJTp3vBvXAYuANwN9U1QrgaZwKnZZB29zsTqouTe+xJD8D0H5un+f2LEhJ9qML2K6sqmtasX23m9pUy6109wQe1FLmgdfrVE4G3pXkYbrbPU6nG3mz33ZDVW1rP7cD6+n+WPBaHW4cGK+qO9r6Orogzn6bgkHb3OxOqi5NbzCN2fuAa+exLQtSu5/os8DWqvqzgU323RBJDk1yUFs+ADiD7n7AW+hS5oH9touq+sOqOqKqltB9n91cVe/BfptRkgOTvGJiGfhFYAteq0NV1feA7yZ5bSv6BeCb2G9TMiPCHCV5O91fohOpuj4xz01akJJ8ETgNeBXwGHAR8GXgauBngX8HzqmqyQ8r7NOSnALcDmzm/+8x+iO6+9rsu2kkOZ7u5uVFdH+cXl1VlyQ5im4E6WDgXuDXq+pH89fShSvJacCHq+qd9tvMWh+tb6uLgb+rqk8kOQSv1aGSLKd78OUlwEPAb9CuW+y35zFokyRJ6gGnRyVJknrAoE2SJKkHDNokSZJ6wKBNkiSpBwzaJEmSesCgTdJIJdmRZFOSLUn+IcnLpql33cS71WZ5/MOSrJu55rT7P5zkVVOUvzzJp5M8mGQsyW1JTnqh51kIkixvrymS1EMGbZJG7ZmqWl5VrweeBX5ncGM6P1ZVb2/ZC2alqrZV1dkz15y1tcD3gaVVdRxwHt17BvtsOWDQJvWUQZukvel24OgkS5JsTfLXwD3AkRMjXgPbPtNGuL7ashqQ5Ogk/5TkviT3JHlNq7+lbT8vybVJrk9yf5KLJk6c5MstkffYQDLvKSV5DXAS8MdVtROgqh6qqq+07b/fRg63JLmglS1J8q2W8HpLkiuTnJHk60m+nWRlq3dxkiuS3NzKP9DKk+STbd/NSda08tOS3JpkXTv+lS1TBklOSPK19rluGEj7c2uSS5NsTPJvSd7SsrZcAqxpI59r9tD/qaS9xKBN0l7Rcle+jS67A8BrgS9U1YqqemRS9aXAp9oI15PAr7TyK1v5MuDNwKNTnGol8B66UaVzkpzYyn+zqk4ATgR+r72pfjrHAZuqascUn+MEuje2n0SXz/QDSVa0zUcDlwHHA8cAvwacAnyYLpPFhOOBdwCrgAuTHAb8cmvzMrq0W5+cCMKAFcAFwLHAUcDJ6XLS/iVwdvtclwODGVkWV9XKtt9FVfUscCFwVRv5vGrI55e0AC2euYokzckBSTa15dvpcqkeBjxSVf86zT7fqaqJfe4GlrS8jodX1XqAqvofgDboNOjGqnq8bbuGLmi6iy5Qe3ercyRdYPj4C/g8pwDrq+rpgXO8hS5X4neqanMrHwNuqqpKshlYMnCMa6vqGeCZJLfQBZqnAF9sgeJjSb4GvBF4CthYVePtuJvasZ4EXg/c2PpgEc8PYq9pP++edG5JPWXQJmnUnqmq5YMFLch4esg+g3ktdwAHALtEZ9OYnJuvWh7NM4BVVfXfSW4F9h9yjDFgWbvXbuekbcPaMdjunQPrO3n+9+0ubZzFcXe0YwUYq6pVM+wzUV9Szzk9KqkXquopYDzJWQBJXjrNk6hvTXJwuw/uLODrwCuBJ1rAdgzdtOawcz1INzr3sYH7x5YmWQ3cBpyV5GVJDgTeTTeCOBurk+zfpmhPA+5sx12TZFGSQ4FTgY1DjnE/cGiSVa19+yU5bobz/gB4xSzbKmmBMGiT1CfvpZvm/AbwL8BPT1Hnn4ErgE3Al6rqLuB6YHHb7+PAdNOyg97fjv9Am978DLCtqu4BPkcXUN0BrK2qe2f5OTYCX2nt+HhVbQPWA98A7gNuBj5SVd+b7gDtHrWzgUuT3Nc+75tnOO8twLE+iCD1U6omj9JLUj8lOQ84sarOn++2TCfJxcAPq+pP57stkvrFkTZJkqQecKRNkiSpBxxpkyRJ6gGDNkmSpB4waJMkSeoBgzZJkqQeMGiTJEnqAYM2SZKkHvhfRHt2JG/i5IkAAAAASUVORK5CYII=
 "
 >
 </div>
@@ -16938,7 +16963,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[302]:</div>
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Map weights for the first principal component to corresponding feature names</span>
@@ -16967,7 +16992,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[197]:</div>
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#calculating explained variance</span>
@@ -16983,7 +17008,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[198]:</div>
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ratios_pd</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -16999,7 +17024,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[198]:</div>
+    <div class="prompt output_prompt">Out[81]:</div>
 
 
 
@@ -17059,7 +17084,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[199]:</div>
+<div class="prompt input_prompt">In&nbsp;[82]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#First component</span>
@@ -17077,171 +17102,171 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[199]:</div>
+    <div class="prompt output_prompt">Out[82]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;MOBI_REGIO&#39;: -0.19949317867641753,
- &#39;KBA05_ANTG1&#39;: -0.18643440526260691,
- &#39;FINANZ_MINIMALIST&#39;: -0.1840598944135835,
- &#39;PLZ8_ANTG1&#39;: -0.179979224123442,
- &#39;KBA05_GBZ&#39;: -0.17723013529878878,
- &#39;LP_LEBENSPHASE_FEIN&#39;: -0.14375436521622162,
- &#39;KONSUMNAEHE&#39;: -0.13341032546563883,
- &#39;PLZ8_GBZ&#39;: -0.13192123680384643,
- &#39;LP_LEBENSPHASE_GROB&#39;: -0.13037695930500948,
- &#39;INNENSTADT&#39;: -0.12613589799861388,
- &#39;LP_STATUS_FEIN_10.0&#39;: -0.11122198675904027,
- &#39;LP_STATUS_GROB_5.0&#39;: -0.11122198675904027,
- &#39;LP_STATUS_GROB_4.0&#39;: -0.10927224194913962,
- &#39;LP_STATUS_FEIN_9.0&#39;: -0.107897505348231,
- &#39;CAMEO_INTL_2015_Wealth_20.0&#39;: -0.10318529925540379,
- &#39;GREEN_AVANTGARDE&#39;: -0.10143753703373942,
- &#39;PRAEGENDE_JUGENDJAHRE_Movement&#39;: -0.099220438610993264,
- &#39;CAMEO_INTL_2015_Wealth_10.0&#39;: -0.097519376974163297,
- &#39;ZABEOTYP_1&#39;: -0.095481565738603849,
- &#39;ANZ_PERSONEN&#39;: -0.09522921855954003,
- &#39;BALLRAUM&#39;: -0.095094843658884681,
- &#39;GEBAEUDETYP_RASTER&#39;: -0.092662799183679562,
- &#39;CAMEO_DEUG_2015_2&#39;: -0.083851533260677832,
- &#39;LP_FAMILIE_GROB_5.0&#39;: -0.080141433537218532,
- &#39;FINANZ_VORSORGER&#39;: -0.07830395593270055,
- &#39;ALTERSKATEGORIE_GROB&#39;: -0.078043947171402506,
- &#39;FINANZTYP_2&#39;: -0.073864768991702676,
- &#39;CAMEO_DEUG_2015_4&#39;: -0.072483427577492196,
- &#39;WOHNLAGE&#39;: -0.063771622115966972,
- &#39;CAMEO_DEUG_2015_3&#39;: -0.063123292186889612,
- &#39;NATIONALITAET_KZ_1.0&#39;: -0.06155863359491167,
- &#39;KBA13_ANZAHL_PKW&#39;: -0.060912447002861587,
- &#39;CAMEO_INTL_2015_LifeStage_4.0&#39;: -0.060431130913979073,
- &#39;ONLINE_AFFINITAET&#39;: -0.059844501266287022,
- &#39;LP_FAMILIE_FEIN_10.0&#39;: -0.055224213236196813,
- &#39;WOHNDAUER_2008&#39;: -0.054603690077108386,
- &#39;LP_FAMILIE_FEIN_11.0&#39;: -0.053430971129573922,
- &#39;FINANZTYP_3&#39;: -0.051956056803190077,
- &#39;CAMEO_INTL_2015_LifeStage_3.0&#39;: -0.051641677847074456,
- &#39;MIN_GEBAEUDEJAHR&#39;: -0.051285218123132692,
- &#39;ZABEOTYP_2&#39;: -0.049872739099814815,
- &#39;SEMIO_LUST&#39;: -0.047649975423265843,
- &#39;SEMIO_ERL&#39;: -0.044468793693934465,
- &#39;CAMEO_DEUG_2015_1&#39;: -0.044053251047201557,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_60.0&#39;: -0.041213777990182721,
- &#39;SEMIO_VERT&#39;: -0.040670401897548239,
- &#39;CJT_GESAMTTYP_2.0&#39;: -0.040051455141166412,
- &#39;GFK_URLAUBERTYP_7.0&#39;: -0.037002848961735335,
- &#39;CAMEO_INTL_2015_LifeStage_2.0&#39;: -0.033675021149501591,
- &#39;LP_FAMILIE_GROB_4.0&#39;: -0.033238024026497281,
- &#39;SHOPPER_TYP_3.0&#39;: -0.031656701624198022,
- &#39;LP_STATUS_GROB_3.0&#39;: -0.031449324562729843,
- &#39;FINANZTYP_6&#39;: -0.029400615262072556,
- &#39;VERS_TYP_1.0&#39;: -0.028826449801859999,
- &#39;LP_FAMILIE_FEIN_8.0&#39;: -0.028536940548945441,
- &#39;LP_STATUS_FEIN_6.0&#39;: -0.028193747568077802,
- &#39;LP_FAMILIE_FEIN_2.0&#39;: -0.027916423552457742,
- &#39;LP_FAMILIE_GROB_2.0&#39;: -0.027916423552457742,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_50.0&#39;: -0.027094710239601225,
- &#39;GFK_URLAUBERTYP_6.0&#39;: -0.026947711306480358,
- &#39;GFK_URLAUBERTYP_5.0&#39;: -0.02481737285807736,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_70.0&#39;: -0.02190310392646598,
- &#39;LP_STATUS_FEIN_5.0&#39;: -0.021243114315693416,
- &#39;SHOPPER_TYP_0.0&#39;: -0.020484505489376397,
- &#39;LP_STATUS_FEIN_4.0&#39;: -0.019869474020315369,
- &#39;CAMEO_INTL_2015_LifeStage_5.0&#39;: -0.01905113517075923,
- &#39;GFK_URLAUBERTYP_2.0&#39;: -0.018293933332129957,
- &#39;LP_FAMILIE_FEIN_7.0&#39;: -0.01789391083145752,
- &#39;GFK_URLAUBERTYP_1.0&#39;: -0.017140240605076813,
- &#39;LP_STATUS_FEIN_8.0&#39;: -0.016888797218515363,
- &#39;LP_STATUS_GROB_2.0&#39;: -0.013794855809311316,
- &#39;LP_STATUS_FEIN_7.0&#39;: -0.013474401679865274,
- &#39;CJT_GESAMTTYP_1.0&#39;: -0.013333883286819203,
- &#39;GFK_URLAUBERTYP_3.0&#39;: -0.012337346469644947,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_40.0&#39;: -0.012255893645743102,
- &#39;CAMEO_DEUG_2015_5&#39;: -0.010921308129203344,
- &#39;CAMEO_INTL_2015_Wealth_30.0&#39;: -0.0074436995978853435,
- &#39;LP_FAMILIE_FEIN_9.0&#39;: -0.0073511235528896579,
- &#39;ZABEOTYP_3&#39;: -0.0070411390829901695,
- &#39;RETOURTYP_BK_S&#39;: -0.0063961604180299732,
- &#39;GFK_URLAUBERTYP_9.0&#39;: -0.0061207877470609495,
- &#39;LP_FAMILIE_FEIN_6.0&#39;: -0.0058373846259638894,
- &#39;ANZ_TITEL&#39;: -0.0053873014494306426,
- &#39;GFK_URLAUBERTYP_10.0&#39;: -0.0036472620724021213,
- &#39;LP_FAMILIE_FEIN_5.0&#39;: -0.0025210439481047763,
- &#39;SOHO_KZ&#39;: -0.0023899668425658221,
- &#39;CAMEO_DEUG_2015_6&#39;: 0.00017285984801481896,
- &#39;SHOPPER_TYP_1.0&#39;: 0.00034217005130521017,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_80.0&#39;: 0.0018840409647146162,
- &#39;LP_FAMILIE_GROB_3.0&#39;: 0.0030202664900447376,
- &#39;LP_FAMILIE_FEIN_4.0&#39;: 0.0038815800897075486,
- &#39;GFK_URLAUBERTYP_8.0&#39;: 0.0042496559215143758,
- &#39;CJT_GESAMTTYP_5.0&#39;: 0.0048869294750959053,
- &#39;LP_FAMILIE_FEIN_3.0&#39;: 0.0051065471288423946,
- &#39;FINANZTYP_4&#39;: 0.0051505305828710339,
- &#39;FINANZTYP_5&#39;: 0.0077984710332485649,
- &#39;KBA05_ANTG2&#39;: 0.011159216127478607,
- &#39;CJT_GESAMTTYP_6.0&#39;: 0.012084331821971028,
- &#39;ANREDE_KZ&#39;: 0.013610345251456822,
- &#39;LP_STATUS_FEIN_3.0&#39;: 0.01397919358430524,
- &#39;GFK_URLAUBERTYP_4.0&#39;: 0.014430847442618706,
- &#39;CJT_GESAMTTYP_3.0&#39;: 0.016006270138617079,
- &#39;VERS_TYP_2.0&#39;: 0.016583461056935814,
- &#39;CJT_GESAMTTYP_4.0&#39;: 0.017864551533371825,
- &#39;SEMIO_KRIT&#39;: 0.018039868198279616,
- &#39;SEMIO_SOZ&#39;: 0.02305155225991155,
- &#39;HEALTH_TYP&#39;: 0.023268398995057404,
- &#39;SEMIO_DOM&#39;: 0.023815018049571778,
- &#39;GFK_URLAUBERTYP_11.0&#39;: 0.023954568530673504,
- &#39;NATIONALITAET_KZ_3.0&#39;: 0.024319847555355177,
- &#39;ANZ_HH_TITEL&#39;: 0.025828555635534572,
- &#39;ZABEOTYP_4&#39;: 0.031374482906599652,
- &#39;SHOPPER_TYP_2.0&#39;: 0.033017404590280304,
- &#39;CAMEO_DEUG_2015_7&#39;: 0.033750888721829367,
- &#39;PLZ8_HHZ&#39;: 0.034412302130607572,
- &#39;CAMEO_INTL_2015_Wealth_40.0&#39;: 0.03556411464807243,
- &#39;KKK&#39;: 0.036937424261259851,
- &#39;SEMIO_KAEM&#39;: 0.037790568775149795,
- &#39;ZABEOTYP_6&#39;: 0.038354309004335264,
- &#39;SEMIO_KULT&#39;: 0.041172539801325923,
- &#39;OST_WEST_KZ&#39;: 0.042009074467070091,
- &#39;NATIONALITAET_KZ_2.0&#39;: 0.044098481366972676,
- &#39;FINANZ_ANLEGER&#39;: 0.048191590239017694,
- &#39;FINANZ_UNAUFFAELLIGER&#39;: 0.048554747208774084,
- &#39;SEMIO_FAM&#39;: 0.04920034963337927,
- &#39;SEMIO_MAT&#39;: 0.051847945358158308,
- &#39;SEMIO_TRADV&#39;: 0.054582835910699144,
- &#39;W_KEIT_KIND_HH&#39;: 0.054968948287776175,
- &#39;REGIOTYP&#39;: 0.059781606370276054,
- &#39;GFK_URLAUBERTYP_12.0&#39;: 0.059860698476271519,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_90.0&#39;: 0.062637614900985308,
- &#39;SEMIO_RAT&#39;: 0.063852039609616246,
- &#39;SEMIO_REL&#39;: 0.072774485428002522,
- &#39;ZABEOTYP_5&#39;: 0.075081386965526492,
- &#39;SEMIO_PFLICHT&#39;: 0.076747784882679665,
- &#39;CAMEO_DEUG_2015_8&#39;: 0.090031147512280418,
- &#39;LP_FAMILIE_FEIN_1.0&#39;: 0.10014419964720009,
- &#39;LP_FAMILIE_GROB_1.0&#39;: 0.10014419964720009,
- &#39;RELAT_AB&#39;: 0.10551241381773228,
- &#39;FINANZTYP_1&#39;: 0.10747233731576597,
- &#39;FINANZ_SPARER&#39;: 0.10760544508771186,
- &#39;CAMEO_DEUG_2015_9&#39;: 0.10902833029706524,
- &#39;LP_STATUS_FEIN_2.0&#39;: 0.11038913189541311,
- &#39;ANZ_HAUSHALTE_AKTIV&#39;: 0.11130388819501444,
- &#39;ARBEIT&#39;: 0.11242736161460533,
- &#39;KBA05_ANTG3&#39;: 0.11269966153681445,
- &#39;PLZ8_ANTG2&#39;: 0.12312914230092771,
- &#39;KBA05_ANTG4&#39;: 0.12336146526487526,
- &#39;LP_STATUS_FEIN_1.0&#39;: 0.12578085764665645,
- &#39;CAMEO_INTL_2015_LifeStage_1.0&#39;: 0.13573139646947482,
- &#39;CAMEO_INTL_2015_Wealth_50.0&#39;: 0.14563587514935514,
- &#39;FINANZ_HAUSBAUER&#39;: 0.14687936643576069,
- &#39;EWDICHTE&#39;: 0.15204561719904161,
- &#39;ORTSGR_KLS9&#39;: 0.15360750999273168,
- &#39;PLZ8_BAUMAX&#39;: 0.16970407813741156,
- &#39;PLZ8_ANTG4&#39;: 0.17415614009797303,
- &#39;PLZ8_ANTG3&#39;: 0.17986230971142672,
- &#39;HH_EINKOMMEN_SCORE&#39;: 0.18027008915851428,
- &#39;LP_STATUS_GROB_1.0&#39;: 0.19125316225073657}</pre>
+<pre>{&#39;MOBI_REGIO&#39;: -0.19949318450670778,
+ &#39;KBA05_ANTG1&#39;: -0.1864344121495437,
+ &#39;FINANZ_MINIMALIST&#39;: -0.18405989127520131,
+ &#39;PLZ8_ANTG1&#39;: -0.17997921404445669,
+ &#39;KBA05_GBZ&#39;: -0.17723014313357199,
+ &#39;LP_LEBENSPHASE_FEIN&#39;: -0.1437543695501026,
+ &#39;KONSUMNAEHE&#39;: -0.13341029481809846,
+ &#39;PLZ8_GBZ&#39;: -0.13192122774445811,
+ &#39;LP_LEBENSPHASE_GROB&#39;: -0.13037696194466503,
+ &#39;INNENSTADT&#39;: -0.12613593172466622,
+ &#39;LP_STATUS_FEIN_10.0&#39;: -0.11122198759457977,
+ &#39;LP_STATUS_GROB_5.0&#39;: -0.11122198759457977,
+ &#39;LP_STATUS_GROB_4.0&#39;: -0.10927224218830378,
+ &#39;LP_STATUS_FEIN_9.0&#39;: -0.10789749729534386,
+ &#39;CAMEO_INTL_2015_Wealth_20.0&#39;: -0.10318529173324785,
+ &#39;GREEN_AVANTGARDE&#39;: -0.10143753525165418,
+ &#39;PRAEGENDE_JUGENDJAHRE_Movement&#39;: -0.09922043779964973,
+ &#39;CAMEO_INTL_2015_Wealth_10.0&#39;: -0.097519378701434387,
+ &#39;ZABEOTYP_1&#39;: -0.095481548634485824,
+ &#39;ANZ_PERSONEN&#39;: -0.095229219196000886,
+ &#39;BALLRAUM&#39;: -0.095094867930640495,
+ &#39;GEBAEUDETYP_RASTER&#39;: -0.09266276818850365,
+ &#39;CAMEO_DEUG_2015_2&#39;: -0.083851529203635408,
+ &#39;LP_FAMILIE_GROB_5.0&#39;: -0.080141433496757966,
+ &#39;FINANZ_VORSORGER&#39;: -0.078303949208607879,
+ &#39;ALTERSKATEGORIE_GROB&#39;: -0.078043941426506044,
+ &#39;FINANZTYP_2&#39;: -0.073864780585149628,
+ &#39;CAMEO_DEUG_2015_4&#39;: -0.072483395287306254,
+ &#39;WOHNLAGE&#39;: -0.063771608572228272,
+ &#39;CAMEO_DEUG_2015_3&#39;: -0.063123317002407586,
+ &#39;NATIONALITAET_KZ_1.0&#39;: -0.061558637034895183,
+ &#39;KBA13_ANZAHL_PKW&#39;: -0.060912443105536757,
+ &#39;CAMEO_INTL_2015_LifeStage_4.0&#39;: -0.060431157715623303,
+ &#39;ONLINE_AFFINITAET&#39;: -0.05984448294037388,
+ &#39;LP_FAMILIE_FEIN_10.0&#39;: -0.055224192468319798,
+ &#39;WOHNDAUER_2008&#39;: -0.054603711160733752,
+ &#39;LP_FAMILIE_FEIN_11.0&#39;: -0.053430992577362654,
+ &#39;FINANZTYP_3&#39;: -0.05195604375919409,
+ &#39;CAMEO_INTL_2015_LifeStage_3.0&#39;: -0.051641664985120642,
+ &#39;MIN_GEBAEUDEJAHR&#39;: -0.051285249114396345,
+ &#39;ZABEOTYP_2&#39;: -0.049872716474109235,
+ &#39;SEMIO_LUST&#39;: -0.047649936379207683,
+ &#39;SEMIO_ERL&#39;: -0.044468781967303493,
+ &#39;CAMEO_DEUG_2015_1&#39;: -0.044053259920322892,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_60.0&#39;: -0.041213785715919819,
+ &#39;SEMIO_VERT&#39;: -0.040670400288281325,
+ &#39;CJT_GESAMTTYP_2.0&#39;: -0.040051430021239884,
+ &#39;GFK_URLAUBERTYP_7.0&#39;: -0.037002877261609529,
+ &#39;CAMEO_INTL_2015_LifeStage_2.0&#39;: -0.033675047456389606,
+ &#39;LP_FAMILIE_GROB_4.0&#39;: -0.033238028379220942,
+ &#39;SHOPPER_TYP_3.0&#39;: -0.03165669593042187,
+ &#39;LP_STATUS_GROB_3.0&#39;: -0.031449321153578305,
+ &#39;FINANZTYP_6&#39;: -0.029400609508865232,
+ &#39;VERS_TYP_1.0&#39;: -0.028826459996742843,
+ &#39;LP_FAMILIE_FEIN_8.0&#39;: -0.02853694888776822,
+ &#39;LP_STATUS_FEIN_6.0&#39;: -0.028193746132919105,
+ &#39;LP_FAMILIE_FEIN_2.0&#39;: -0.027916423836148896,
+ &#39;LP_FAMILIE_GROB_2.0&#39;: -0.027916423836148896,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_50.0&#39;: -0.027094699860811599,
+ &#39;GFK_URLAUBERTYP_6.0&#39;: -0.026947718419717315,
+ &#39;GFK_URLAUBERTYP_5.0&#39;: -0.024817403930216718,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_70.0&#39;: -0.021903059147591868,
+ &#39;LP_STATUS_FEIN_5.0&#39;: -0.021243109196249357,
+ &#39;SHOPPER_TYP_0.0&#39;: -0.020484521352150831,
+ &#39;LP_STATUS_FEIN_4.0&#39;: -0.019869468305613463,
+ &#39;CAMEO_INTL_2015_LifeStage_5.0&#39;: -0.019051134199354024,
+ &#39;GFK_URLAUBERTYP_2.0&#39;: -0.01829390111892755,
+ &#39;LP_FAMILIE_FEIN_7.0&#39;: -0.017893897057432759,
+ &#39;GFK_URLAUBERTYP_1.0&#39;: -0.017140223084013279,
+ &#39;LP_STATUS_FEIN_8.0&#39;: -0.016888819182060998,
+ &#39;LP_STATUS_GROB_2.0&#39;: -0.013794856727605385,
+ &#39;LP_STATUS_FEIN_7.0&#39;: -0.013474397390329447,
+ &#39;CJT_GESAMTTYP_1.0&#39;: -0.013333889723090971,
+ &#39;GFK_URLAUBERTYP_3.0&#39;: -0.012337366543643338,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_40.0&#39;: -0.012255906444112565,
+ &#39;CAMEO_DEUG_2015_5&#39;: -0.010921305942328928,
+ &#39;CAMEO_INTL_2015_Wealth_30.0&#39;: -0.0074436944904205321,
+ &#39;LP_FAMILIE_FEIN_9.0&#39;: -0.007351145303106584,
+ &#39;ZABEOTYP_3&#39;: -0.0070411856450104619,
+ &#39;RETOURTYP_BK_S&#39;: -0.0063961826339024126,
+ &#39;GFK_URLAUBERTYP_9.0&#39;: -0.0061207545561795043,
+ &#39;LP_FAMILIE_FEIN_6.0&#39;: -0.0058374026603137336,
+ &#39;ANZ_TITEL&#39;: -0.0053873112091449493,
+ &#39;GFK_URLAUBERTYP_10.0&#39;: -0.003647265584538927,
+ &#39;LP_FAMILIE_FEIN_5.0&#39;: -0.0025210331664767328,
+ &#39;SOHO_KZ&#39;: -0.0023899799379530238,
+ &#39;CAMEO_DEUG_2015_6&#39;: 0.0001728534596108488,
+ &#39;SHOPPER_TYP_1.0&#39;: 0.00034217067762014938,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_80.0&#39;: 0.0018839900145509274,
+ &#39;LP_FAMILIE_GROB_3.0&#39;: 0.0030202615134506689,
+ &#39;LP_FAMILIE_FEIN_4.0&#39;: 0.0038815635229129905,
+ &#39;GFK_URLAUBERTYP_8.0&#39;: 0.0042496534515309402,
+ &#39;CJT_GESAMTTYP_5.0&#39;: 0.0048869108503555242,
+ &#39;LP_FAMILIE_FEIN_3.0&#39;: 0.0051065444866657869,
+ &#39;FINANZTYP_4&#39;: 0.0051505451657061939,
+ &#39;FINANZTYP_5&#39;: 0.0077984824476013473,
+ &#39;KBA05_ANTG2&#39;: 0.01115924644093934,
+ &#39;CJT_GESAMTTYP_6.0&#39;: 0.01208432803069619,
+ &#39;ANREDE_KZ&#39;: 0.013610348726095,
+ &#39;LP_STATUS_FEIN_3.0&#39;: 0.013979183099554019,
+ &#39;GFK_URLAUBERTYP_4.0&#39;: 0.014430829579093201,
+ &#39;CJT_GESAMTTYP_3.0&#39;: 0.016006269839765202,
+ &#39;VERS_TYP_2.0&#39;: 0.016583473740674384,
+ &#39;CJT_GESAMTTYP_4.0&#39;: 0.017864552160361421,
+ &#39;SEMIO_KRIT&#39;: 0.01803986817664284,
+ &#39;SEMIO_SOZ&#39;: 0.023051557738300719,
+ &#39;HEALTH_TYP&#39;: 0.0232683484063574,
+ &#39;SEMIO_DOM&#39;: 0.023815007240933085,
+ &#39;GFK_URLAUBERTYP_11.0&#39;: 0.023954563788188922,
+ &#39;NATIONALITAET_KZ_3.0&#39;: 0.024319853630389021,
+ &#39;ANZ_HH_TITEL&#39;: 0.025828564569115312,
+ &#39;ZABEOTYP_4&#39;: 0.031374508312522364,
+ &#39;SHOPPER_TYP_2.0&#39;: 0.03301741470599228,
+ &#39;CAMEO_DEUG_2015_7&#39;: 0.033750866827799174,
+ &#39;PLZ8_HHZ&#39;: 0.034412309522472068,
+ &#39;CAMEO_INTL_2015_Wealth_40.0&#39;: 0.035564112285706773,
+ &#39;KKK&#39;: 0.036937419647183459,
+ &#39;SEMIO_KAEM&#39;: 0.037790573277476168,
+ &#39;ZABEOTYP_6&#39;: 0.038354337474828658,
+ &#39;SEMIO_KULT&#39;: 0.041172535445205501,
+ &#39;OST_WEST_KZ&#39;: 0.042009087226093055,
+ &#39;NATIONALITAET_KZ_2.0&#39;: 0.044098485533455183,
+ &#39;FINANZ_ANLEGER&#39;: 0.048191585939023882,
+ &#39;FINANZ_UNAUFFAELLIGER&#39;: 0.048554736908429888,
+ &#39;SEMIO_FAM&#39;: 0.049200348122558753,
+ &#39;SEMIO_MAT&#39;: 0.051847949366967357,
+ &#39;SEMIO_TRADV&#39;: 0.054582860675585348,
+ &#39;W_KEIT_KIND_HH&#39;: 0.054968960337389572,
+ &#39;REGIOTYP&#39;: 0.059781607731157926,
+ &#39;GFK_URLAUBERTYP_12.0&#39;: 0.059860724700999457,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_90.0&#39;: 0.06263762657596221,
+ &#39;SEMIO_RAT&#39;: 0.063852043761382343,
+ &#39;SEMIO_REL&#39;: 0.072774484407822304,
+ &#39;ZABEOTYP_5&#39;: 0.075081361957590825,
+ &#39;SEMIO_PFLICHT&#39;: 0.076747780790694234,
+ &#39;CAMEO_DEUG_2015_8&#39;: 0.090031162445922616,
+ &#39;LP_FAMILIE_FEIN_1.0&#39;: 0.10014420568780658,
+ &#39;LP_FAMILIE_GROB_1.0&#39;: 0.10014420568780658,
+ &#39;RELAT_AB&#39;: 0.10551240413540758,
+ &#39;FINANZTYP_1&#39;: 0.1074723156974791,
+ &#39;FINANZ_SPARER&#39;: 0.10760543810897383,
+ &#39;CAMEO_DEUG_2015_9&#39;: 0.10902832980258262,
+ &#39;LP_STATUS_FEIN_2.0&#39;: 0.110389133886892,
+ &#39;ANZ_HAUSHALTE_AKTIV&#39;: 0.11130389873718745,
+ &#39;ARBEIT&#39;: 0.1124273682997641,
+ &#39;KBA05_ANTG3&#39;: 0.11269965121405114,
+ &#39;PLZ8_ANTG2&#39;: 0.12312912759563815,
+ &#39;KBA05_ANTG4&#39;: 0.12336147064315063,
+ &#39;LP_STATUS_FEIN_1.0&#39;: 0.12578085614997994,
+ &#39;CAMEO_INTL_2015_LifeStage_1.0&#39;: 0.13573142880356387,
+ &#39;CAMEO_INTL_2015_Wealth_50.0&#39;: 0.14563586827863698,
+ &#39;FINANZ_HAUSBAUER&#39;: 0.1468793825920563,
+ &#39;EWDICHTE&#39;: 0.15204562755807013,
+ &#39;ORTSGR_KLS9&#39;: 0.15360752005809208,
+ &#39;PLZ8_BAUMAX&#39;: 0.16970407219600828,
+ &#39;PLZ8_ANTG4&#39;: 0.17415613222991091,
+ &#39;PLZ8_ANTG3&#39;: 0.17986229809840307,
+ &#39;HH_EINKOMMEN_SCORE&#39;: 0.18027008221916502,
+ &#39;LP_STATUS_GROB_1.0&#39;: 0.191253162318331}</pre>
 </div>
 
 </div>
@@ -17252,7 +17277,7 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[200]:</div>
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ratios_pd</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -17268,13 +17293,13 @@ Then the rest of the missing values are filled with the mean, along columns, usi
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[200]:</div>
+    <div class="prompt output_prompt">Out[83]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0    0.832764
+<pre>0    0.833089
 dtype: float64</pre>
 </div>
 
@@ -17286,7 +17311,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[201]:</div>
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Map weights for the second principal component to corresponding feature names</span>
@@ -17305,171 +17330,171 @@ dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[201]:</div>
+    <div class="prompt output_prompt">Out[84]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;FINANZ_SPARER&#39;: -0.22845355156095645,
- &#39;FINANZ_UNAUFFAELLIGER&#39;: -0.21451260764500632,
- &#39;SEMIO_REL&#39;: -0.2130747359507652,
- &#39;SEMIO_TRADV&#39;: -0.20647057621291645,
- &#39;SEMIO_PFLICHT&#39;: -0.20592384270766689,
- &#39;FINANZ_ANLEGER&#39;: -0.20476503303026469,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_90.0&#39;: -0.20285056688248834,
- &#39;SEMIO_RAT&#39;: -0.1693666206251756,
- &#39;SEMIO_KULT&#39;: -0.16171454829095466,
- &#39;ONLINE_AFFINITAET&#39;: -0.15971496617969533,
- &#39;FINANZTYP_1&#39;: -0.13645845960700564,
- &#39;SEMIO_FAM&#39;: -0.13048801756963832,
- &#39;SEMIO_MAT&#39;: -0.12868498621933339,
- &#39;ZABEOTYP_4&#39;: -0.10767956944429816,
- &#39;LP_STATUS_FEIN_2.0&#39;: -0.098807933106520349,
- &#39;ZABEOTYP_5&#39;: -0.093555913428516282,
- &#39;FINANZTYP_4&#39;: -0.088723060770371176,
- &#39;LP_STATUS_FEIN_5.0&#39;: -0.080119389097647986,
- &#39;GFK_URLAUBERTYP_9.0&#39;: -0.073647049234726245,
- &#39;FINANZTYP_3&#39;: -0.071181864515483168,
- &#39;LP_FAMILIE_GROB_4.0&#39;: -0.067833052865936716,
- &#39;ANZ_PERSONEN&#39;: -0.067128004253812892,
- &#39;SEMIO_SOZ&#39;: -0.060146146399508132,
- &#39;PLZ8_ANTG1&#39;: -0.057613785874367329,
- &#39;KBA05_GBZ&#39;: -0.054304730880986092,
- &#39;MOBI_REGIO&#39;: -0.054168065851736287,
- &#39;CJT_GESAMTTYP_4.0&#39;: -0.053908127497689869,
- &#39;ZABEOTYP_1&#39;: -0.05379051047203022,
- &#39;LP_LEBENSPHASE_GROB&#39;: -0.051781630040734966,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_80.0&#39;: -0.050692180676092262,
- &#39;HEALTH_TYP&#39;: -0.049424189496925203,
- &#39;NATIONALITAET_KZ_3.0&#39;: -0.048915043616091863,
- &#39;LP_FAMILIE_GROB_5.0&#39;: -0.048845501646418037,
- &#39;SHOPPER_TYP_0.0&#39;: -0.048830477718780858,
- &#39;LP_FAMILIE_GROB_3.0&#39;: -0.048014190961958733,
- &#39;KBA05_ANTG1&#39;: -0.047493658167488843,
- &#39;INNENSTADT&#39;: -0.046233919910567793,
- &#39;PLZ8_GBZ&#39;: -0.045649627298475513,
- &#39;LP_LEBENSPHASE_FEIN&#39;: -0.044949006022344938,
- &#39;KONSUMNAEHE&#39;: -0.044613936804904365,
- &#39;NATIONALITAET_KZ_2.0&#39;: -0.044540575565650019,
- &#39;LP_FAMILIE_FEIN_7.0&#39;: -0.043053546473994529,
- &#39;CJT_GESAMTTYP_6.0&#39;: -0.043008065825017525,
- &#39;GFK_URLAUBERTYP_2.0&#39;: -0.042598127156458644,
- &#39;CAMEO_INTL_2015_Wealth_20.0&#39;: -0.039437729365167921,
- &#39;GFK_URLAUBERTYP_12.0&#39;: -0.039159184281306429,
- &#39;MIN_GEBAEUDEJAHR&#39;: -0.038982511140391057,
- &#39;WOHNLAGE&#39;: -0.037932110360814619,
- &#39;BALLRAUM&#39;: -0.037543802753525528,
- &#39;LP_FAMILIE_FEIN_8.0&#39;: -0.037305269124005218,
- &#39;LP_FAMILIE_FEIN_11.0&#39;: -0.036452758376241123,
- &#39;LP_FAMILIE_FEIN_6.0&#39;: -0.036219194414396971,
- &#39;CJT_GESAMTTYP_3.0&#39;: -0.035325645185195459,
- &#39;CJT_GESAMTTYP_5.0&#39;: -0.03524571906237696,
- &#39;CAMEO_INTL_2015_LifeStage_2.0&#39;: -0.034297554888759602,
- &#39;CAMEO_DEUG_2015_4&#39;: -0.033021899968530048,
- &#39;LP_FAMILIE_FEIN_4.0&#39;: -0.031246121067928262,
- &#39;ZABEOTYP_2&#39;: -0.03064949047603718,
- &#39;LP_FAMILIE_FEIN_10.0&#39;: -0.028787797241161348,
- &#39;GEBAEUDETYP_RASTER&#39;: -0.027574561101827516,
- &#39;LP_FAMILIE_FEIN_5.0&#39;: -0.026479651489687207,
- &#39;LP_FAMILIE_FEIN_3.0&#39;: -0.025010716051544736,
- &#39;CAMEO_INTL_2015_LifeStage_3.0&#39;: -0.024348712563321273,
- &#39;KBA13_ANZAHL_PKW&#39;: -0.023800885503397397,
- &#39;SHOPPER_TYP_1.0&#39;: -0.021606575855764157,
- &#39;CAMEO_DEUG_2015_2&#39;: -0.021517639796391437,
- &#39;VERS_TYP_1.0&#39;: -0.021227284616776417,
- &#39;GFK_URLAUBERTYP_1.0&#39;: -0.019477930949874114,
- &#39;LP_STATUS_FEIN_4.0&#39;: -0.019293505867682949,
- &#39;CAMEO_DEUG_2015_3&#39;: -0.018332579158230194,
- &#39;LP_STATUS_FEIN_8.0&#39;: -0.01792335286924427,
- &#39;CAMEO_INTL_2015_Wealth_10.0&#39;: -0.017741928378826662,
- &#39;SEMIO_VERT&#39;: -0.017536784327564642,
- &#39;GFK_URLAUBERTYP_11.0&#39;: -0.014995912159056579,
- &#39;LP_STATUS_GROB_2.0&#39;: -0.014623102185683034,
- &#39;LP_FAMILIE_FEIN_9.0&#39;: -0.012030596090449338,
- &#39;LP_STATUS_GROB_4.0&#39;: -0.0095919574707779079,
- &#39;LP_STATUS_FEIN_6.0&#39;: -0.0085908851930627753,
- &#39;CAMEO_INTL_2015_LifeStage_4.0&#39;: -0.0078835379250458033,
- &#39;KBA05_ANTG2&#39;: -0.0067101286227045755,
- &#39;CAMEO_DEUG_2015_5&#39;: -0.0054101814218049738,
- &#39;KKK&#39;: -0.004269224140028418,
- &#39;LP_STATUS_FEIN_9.0&#39;: -0.0032560460760909134,
- &#39;CAMEO_INTL_2015_Wealth_30.0&#39;: -0.0032183527035884443,
- &#39;LP_STATUS_GROB_3.0&#39;: -0.0025748102854394011,
- &#39;GREEN_AVANTGARDE&#39;: -0.0024970587226518129,
- &#39;SOHO_KZ&#39;: -0.0018723054717805125,
- &#39;PRAEGENDE_JUGENDJAHRE_Movement&#39;: -0.0016753327838531947,
- &#39;SHOPPER_TYP_2.0&#39;: 0.0010345119735841635,
- &#39;CAMEO_DEUG_2015_1&#39;: 0.0011296468157616949,
- &#39;ANZ_TITEL&#39;: 0.0066087060453280432,
- &#39;GFK_URLAUBERTYP_10.0&#39;: 0.0074560290235968349,
- &#39;PLZ8_HHZ&#39;: 0.0076344380547159292,
- &#39;REGIOTYP&#39;: 0.009733153823361396,
- &#39;LP_STATUS_FEIN_7.0&#39;: 0.0098603791762834295,
- &#39;CAMEO_DEUG_2015_7&#39;: 0.010056424697788028,
- &#39;CAMEO_DEUG_2015_6&#39;: 0.01126616931671879,
- &#39;LP_STATUS_GROB_1.0&#39;: 0.012210575795432046,
- &#39;LP_STATUS_FEIN_10.0&#39;: 0.012431127807058443,
- &#39;LP_STATUS_GROB_5.0&#39;: 0.012431127807058443,
- &#39;CAMEO_INTL_2015_Wealth_40.0&#39;: 0.014709328213994313,
- &#39;CAMEO_DEUG_2015_9&#39;: 0.015008494828901134,
- &#39;OST_WEST_KZ&#39;: 0.018198255751921012,
- &#39;CAMEO_INTL_2015_LifeStage_1.0&#39;: 0.01849488908359315,
- &#39;GFK_URLAUBERTYP_6.0&#39;: 0.019879398915520659,
- &#39;GFK_URLAUBERTYP_8.0&#39;: 0.021112576269758404,
- &#39;ANZ_HH_TITEL&#39;: 0.02272818621523065,
- &#39;ZABEOTYP_6&#39;: 0.023720256972560191,
- &#39;SEMIO_DOM&#39;: 0.02407134451876922,
- &#39;KBA05_ANTG3&#39;: 0.02488455893165099,
- &#39;GFK_URLAUBERTYP_5.0&#39;: 0.025277160816608663,
- &#39;VERS_TYP_2.0&#39;: 0.027227452136140119,
- &#39;HH_EINKOMMEN_SCORE&#39;: 0.029504560589699354,
- &#39;GFK_URLAUBERTYP_3.0&#39;: 0.029901241414306296,
- &#39;CAMEO_DEUG_2015_8&#39;: 0.032996989623441712,
- &#39;ANREDE_KZ&#39;: 0.034323445510938098,
- &#39;LP_FAMILIE_FEIN_2.0&#39;: 0.037979997029098385,
- &#39;LP_FAMILIE_GROB_2.0&#39;: 0.037979997029098385,
- &#39;CAMEO_INTL_2015_LifeStage_5.0&#39;: 0.038934435088926196,
- &#39;CAMEO_INTL_2015_Wealth_50.0&#39;: 0.039183166542882682,
- &#39;ANZ_HAUSHALTE_AKTIV&#39;: 0.040548702414992206,
- &#39;PLZ8_ANTG2&#39;: 0.041585191666250493,
- &#39;RELAT_AB&#39;: 0.041889566896875716,
- &#39;GFK_URLAUBERTYP_7.0&#39;: 0.042160994609469968,
- &#39;KBA05_ANTG4&#39;: 0.043457962849235678,
- &#39;ARBEIT&#39;: 0.044487842200805233,
- &#39;LP_STATUS_FEIN_3.0&#39;: 0.049648219142562885,
- &#39;PLZ8_BAUMAX&#39;: 0.05231616200843546,
- &#39;SEMIO_KAEM&#39;: 0.052461886822120302,
- &#39;WOHNDAUER_2008&#39;: 0.053744166883850093,
- &#39;PLZ8_ANTG4&#39;: 0.055771358083295919,
- &#39;GFK_URLAUBERTYP_4.0&#39;: 0.057224367275883439,
- &#39;ORTSGR_KLS9&#39;: 0.057714043341358975,
- &#39;EWDICHTE&#39;: 0.058740674197134787,
- &#39;PLZ8_ANTG3&#39;: 0.059114233469536662,
- &#39;LP_FAMILIE_FEIN_1.0&#39;: 0.062523801596787124,
- &#39;LP_FAMILIE_GROB_1.0&#39;: 0.062523801596787124,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_70.0&#39;: 0.06382569204144195,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_40.0&#39;: 0.06532282280578354,
- &#39;NATIONALITAET_KZ_1.0&#39;: 0.067215108542445667,
- &#39;FINANZTYP_6&#39;: 0.068764602308618847,
- &#39;CJT_GESAMTTYP_1.0&#39;: 0.069618253537673494,
- &#39;SEMIO_KRIT&#39;: 0.071722166074882965,
- &#39;SHOPPER_TYP_3.0&#39;: 0.073347512729916561,
- &#39;FINANZ_HAUSBAUER&#39;: 0.075893253605896008,
- &#39;FINANZTYP_2&#39;: 0.091390839416745598,
- &#39;LP_STATUS_FEIN_1.0&#39;: 0.091585199377913873,
- &#39;FINANZ_MINIMALIST&#39;: 0.096403185893673762,
- &#39;FINANZTYP_5&#39;: 0.096891132321107382,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_50.0&#39;: 0.10391627013275286,
- &#39;CJT_GESAMTTYP_2.0&#39;: 0.10730901819474907,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_60.0&#39;: 0.11559753238940498,
- &#39;W_KEIT_KIND_HH&#39;: 0.12657210430128582,
- &#39;RETOURTYP_BK_S&#39;: 0.15633860163115978,
- &#39;SEMIO_LUST&#39;: 0.16104166037958709,
- &#39;SEMIO_ERL&#39;: 0.17729004052549063,
- &#39;ZABEOTYP_3&#39;: 0.19699362335442594,
- &#39;FINANZ_VORSORGER&#39;: 0.21947309153577058,
- &#39;ALTERSKATEGORIE_GROB&#39;: 0.23244130256013731}</pre>
+<pre>{&#39;FINANZ_SPARER&#39;: -0.22845351084231266,
+ &#39;FINANZ_UNAUFFAELLIGER&#39;: -0.2145125692447262,
+ &#39;SEMIO_REL&#39;: -0.21307469127949949,
+ &#39;SEMIO_TRADV&#39;: -0.20647063479187533,
+ &#39;SEMIO_PFLICHT&#39;: -0.20592377150957403,
+ &#39;FINANZ_ANLEGER&#39;: -0.20476507421743337,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_90.0&#39;: -0.20285053222965244,
+ &#39;SEMIO_RAT&#39;: -0.1693666582680142,
+ &#39;SEMIO_KULT&#39;: -0.16171455117581429,
+ &#39;ONLINE_AFFINITAET&#39;: -0.15971499668444836,
+ &#39;FINANZTYP_1&#39;: -0.13645839724315376,
+ &#39;SEMIO_FAM&#39;: -0.130487946565888,
+ &#39;SEMIO_MAT&#39;: -0.12868500796987301,
+ &#39;ZABEOTYP_4&#39;: -0.10767951310223413,
+ &#39;LP_STATUS_FEIN_2.0&#39;: -0.098807996264775252,
+ &#39;ZABEOTYP_5&#39;: -0.093555944920261536,
+ &#39;FINANZTYP_4&#39;: -0.088723131758767115,
+ &#39;LP_STATUS_FEIN_5.0&#39;: -0.080119569203803989,
+ &#39;GFK_URLAUBERTYP_9.0&#39;: -0.073646819157866583,
+ &#39;FINANZTYP_3&#39;: -0.071181745970654589,
+ &#39;LP_FAMILIE_GROB_4.0&#39;: -0.067833079584927888,
+ &#39;ANZ_PERSONEN&#39;: -0.067127995296637585,
+ &#39;SEMIO_SOZ&#39;: -0.060146049438234372,
+ &#39;PLZ8_ANTG1&#39;: -0.057613809177164334,
+ &#39;KBA05_GBZ&#39;: -0.054304625555241771,
+ &#39;MOBI_REGIO&#39;: -0.054167972963067273,
+ &#39;CJT_GESAMTTYP_4.0&#39;: -0.053908114239218811,
+ &#39;ZABEOTYP_1&#39;: -0.053790706432741885,
+ &#39;LP_LEBENSPHASE_GROB&#39;: -0.051781624195177726,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_80.0&#39;: -0.050692182140288748,
+ &#39;HEALTH_TYP&#39;: -0.049424461865253747,
+ &#39;NATIONALITAET_KZ_3.0&#39;: -0.04891503017266495,
+ &#39;LP_FAMILIE_GROB_5.0&#39;: -0.048845477432001946,
+ &#39;SHOPPER_TYP_0.0&#39;: -0.048830711680286278,
+ &#39;LP_FAMILIE_GROB_3.0&#39;: -0.048014215539951464,
+ &#39;KBA05_ANTG1&#39;: -0.047493528160309072,
+ &#39;INNENSTADT&#39;: -0.046234018199350753,
+ &#39;PLZ8_GBZ&#39;: -0.045649623687105449,
+ &#39;LP_LEBENSPHASE_FEIN&#39;: -0.044949006495404106,
+ &#39;KONSUMNAEHE&#39;: -0.044613917449844553,
+ &#39;NATIONALITAET_KZ_2.0&#39;: -0.044540674205026547,
+ &#39;LP_FAMILIE_FEIN_7.0&#39;: -0.043053628309999904,
+ &#39;CJT_GESAMTTYP_6.0&#39;: -0.043007925745518615,
+ &#39;GFK_URLAUBERTYP_2.0&#39;: -0.042597968258925069,
+ &#39;CAMEO_INTL_2015_Wealth_20.0&#39;: -0.039437713396636119,
+ &#39;GFK_URLAUBERTYP_12.0&#39;: -0.039159124313893075,
+ &#39;MIN_GEBAEUDEJAHR&#39;: -0.038982580822768551,
+ &#39;WOHNLAGE&#39;: -0.037932027276490587,
+ &#39;BALLRAUM&#39;: -0.037543798742586398,
+ &#39;LP_FAMILIE_FEIN_8.0&#39;: -0.037305145464692761,
+ &#39;LP_FAMILIE_FEIN_11.0&#39;: -0.036452838543891648,
+ &#39;LP_FAMILIE_FEIN_6.0&#39;: -0.036219335920551696,
+ &#39;CJT_GESAMTTYP_3.0&#39;: -0.035325649366986511,
+ &#39;CJT_GESAMTTYP_5.0&#39;: -0.035245717569249942,
+ &#39;CAMEO_INTL_2015_LifeStage_2.0&#39;: -0.034297510627577368,
+ &#39;CAMEO_DEUG_2015_4&#39;: -0.033021895431182231,
+ &#39;LP_FAMILIE_FEIN_4.0&#39;: -0.031246224300822575,
+ &#39;ZABEOTYP_2&#39;: -0.030649610587778375,
+ &#39;LP_FAMILIE_FEIN_10.0&#39;: -0.028787746002824723,
+ &#39;GEBAEUDETYP_RASTER&#39;: -0.027574507808158785,
+ &#39;LP_FAMILIE_FEIN_5.0&#39;: -0.026479589556591257,
+ &#39;LP_FAMILIE_FEIN_3.0&#39;: -0.025010708662876593,
+ &#39;CAMEO_INTL_2015_LifeStage_3.0&#39;: -0.024348763435023315,
+ &#39;KBA13_ANZAHL_PKW&#39;: -0.02380090673780676,
+ &#39;SHOPPER_TYP_1.0&#39;: -0.021606611208952235,
+ &#39;CAMEO_DEUG_2015_2&#39;: -0.021517506630180091,
+ &#39;VERS_TYP_1.0&#39;: -0.021227351675873644,
+ &#39;GFK_URLAUBERTYP_1.0&#39;: -0.019477865543814286,
+ &#39;LP_STATUS_FEIN_4.0&#39;: -0.019293485075918559,
+ &#39;CAMEO_DEUG_2015_3&#39;: -0.018332562113289614,
+ &#39;LP_STATUS_FEIN_8.0&#39;: -0.017923515688898366,
+ &#39;CAMEO_INTL_2015_Wealth_10.0&#39;: -0.017741876207238574,
+ &#39;SEMIO_VERT&#39;: -0.017536751934031657,
+ &#39;GFK_URLAUBERTYP_11.0&#39;: -0.01499593270622508,
+ &#39;LP_STATUS_GROB_2.0&#39;: -0.014623121710678691,
+ &#39;LP_FAMILIE_FEIN_9.0&#39;: -0.012030502321478537,
+ &#39;LP_STATUS_GROB_4.0&#39;: -0.0095919749224188302,
+ &#39;LP_STATUS_FEIN_6.0&#39;: -0.0085908459211420634,
+ &#39;CAMEO_INTL_2015_LifeStage_4.0&#39;: -0.007883609554898658,
+ &#39;KBA05_ANTG2&#39;: -0.0067101323638312851,
+ &#39;CAMEO_DEUG_2015_5&#39;: -0.0054101929586006766,
+ &#39;KKK&#39;: -0.0042693837546915869,
+ &#39;LP_STATUS_FEIN_9.0&#39;: -0.0032560027761117413,
+ &#39;CAMEO_INTL_2015_Wealth_30.0&#39;: -0.0032183464974164236,
+ &#39;LP_STATUS_GROB_3.0&#39;: -0.0025748251197774239,
+ &#39;GREEN_AVANTGARDE&#39;: -0.0024970561536738051,
+ &#39;SOHO_KZ&#39;: -0.0018722536681722972,
+ &#39;PRAEGENDE_JUGENDJAHRE_Movement&#39;: -0.0016753255878674989,
+ &#39;SHOPPER_TYP_2.0&#39;: 0.0010346878474724497,
+ &#39;CAMEO_DEUG_2015_1&#39;: 0.0011295414367968818,
+ &#39;ANZ_TITEL&#39;: 0.0066088571078973569,
+ &#39;GFK_URLAUBERTYP_10.0&#39;: 0.0074559257845727735,
+ &#39;PLZ8_HHZ&#39;: 0.0076344387464845403,
+ &#39;REGIOTYP&#39;: 0.0097329504017582731,
+ &#39;LP_STATUS_FEIN_7.0&#39;: 0.0098602810815260275,
+ &#39;CAMEO_DEUG_2015_7&#39;: 0.01005641015510832,
+ &#39;CAMEO_DEUG_2015_6&#39;: 0.011266172490880719,
+ &#39;LP_STATUS_GROB_1.0&#39;: 0.012210633675395521,
+ &#39;LP_STATUS_FEIN_10.0&#39;: 0.012431098012609335,
+ &#39;LP_STATUS_GROB_5.0&#39;: 0.012431098012609335,
+ &#39;CAMEO_INTL_2015_Wealth_40.0&#39;: 0.014709329963604981,
+ &#39;CAMEO_DEUG_2015_9&#39;: 0.015008493167712312,
+ &#39;OST_WEST_KZ&#39;: 0.018198134070293442,
+ &#39;CAMEO_INTL_2015_LifeStage_1.0&#39;: 0.018494879610066371,
+ &#39;GFK_URLAUBERTYP_6.0&#39;: 0.019879358808964603,
+ &#39;GFK_URLAUBERTYP_8.0&#39;: 0.021112614827552657,
+ &#39;ANZ_HH_TITEL&#39;: 0.022728145547723861,
+ &#39;ZABEOTYP_6&#39;: 0.023720228752016553,
+ &#39;SEMIO_DOM&#39;: 0.024071236714464699,
+ &#39;KBA05_ANTG3&#39;: 0.024884346441396001,
+ &#39;GFK_URLAUBERTYP_5.0&#39;: 0.025277194551358365,
+ &#39;VERS_TYP_2.0&#39;: 0.02722749735330017,
+ &#39;HH_EINKOMMEN_SCORE&#39;: 0.029504609653346683,
+ &#39;GFK_URLAUBERTYP_3.0&#39;: 0.029901058906436351,
+ &#39;CAMEO_DEUG_2015_8&#39;: 0.032996940795034672,
+ &#39;ANREDE_KZ&#39;: 0.034323437235996852,
+ &#39;LP_FAMILIE_FEIN_2.0&#39;: 0.037980010706231526,
+ &#39;LP_FAMILIE_GROB_2.0&#39;: 0.037980010706231526,
+ &#39;CAMEO_INTL_2015_LifeStage_5.0&#39;: 0.038934554073262601,
+ &#39;CAMEO_INTL_2015_Wealth_50.0&#39;: 0.039183105363809791,
+ &#39;ANZ_HAUSHALTE_AKTIV&#39;: 0.040548672668828417,
+ &#39;PLZ8_ANTG2&#39;: 0.04158530993212127,
+ &#39;RELAT_AB&#39;: 0.041889654375470972,
+ &#39;GFK_URLAUBERTYP_7.0&#39;: 0.042160845150263734,
+ &#39;KBA05_ANTG4&#39;: 0.043457986744293138,
+ &#39;ARBEIT&#39;: 0.044487818218000401,
+ &#39;LP_STATUS_FEIN_3.0&#39;: 0.049648283958891898,
+ &#39;PLZ8_BAUMAX&#39;: 0.052316172025503406,
+ &#39;SEMIO_KAEM&#39;: 0.052461881682779259,
+ &#39;WOHNDAUER_2008&#39;: 0.053744037819673469,
+ &#39;PLZ8_ANTG4&#39;: 0.055771355347139111,
+ &#39;GFK_URLAUBERTYP_4.0&#39;: 0.057224266747432181,
+ &#39;ORTSGR_KLS9&#39;: 0.057714023662387128,
+ &#39;EWDICHTE&#39;: 0.058740749540701548,
+ &#39;PLZ8_ANTG3&#39;: 0.05911425266630619,
+ &#39;LP_FAMILIE_FEIN_1.0&#39;: 0.062523790346547745,
+ &#39;LP_FAMILIE_GROB_1.0&#39;: 0.062523790346547745,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_70.0&#39;: 0.063825564626275075,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_40.0&#39;: 0.065322800709180118,
+ &#39;NATIONALITAET_KZ_1.0&#39;: 0.067215149425634529,
+ &#39;FINANZTYP_6&#39;: 0.068764702882726556,
+ &#39;CJT_GESAMTTYP_1.0&#39;: 0.069618196569566582,
+ &#39;SEMIO_KRIT&#39;: 0.071722151233532816,
+ &#39;SHOPPER_TYP_3.0&#39;: 0.073347547391826015,
+ &#39;FINANZ_HAUSBAUER&#39;: 0.07589328391389058,
+ &#39;FINANZTYP_2&#39;: 0.091390902127580498,
+ &#39;LP_STATUS_FEIN_1.0&#39;: 0.091585313665646872,
+ &#39;FINANZ_MINIMALIST&#39;: 0.09640313028767003,
+ &#39;FINANZTYP_5&#39;: 0.0968908270371764,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_50.0&#39;: 0.10391635770391061,
+ &#39;CJT_GESAMTTYP_2.0&#39;: 0.10730893233852233,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_60.0&#39;: 0.11559755494872058,
+ &#39;W_KEIT_KIND_HH&#39;: 0.12657214560555921,
+ &#39;RETOURTYP_BK_S&#39;: 0.15633887528183543,
+ &#39;SEMIO_LUST&#39;: 0.16104154801329337,
+ &#39;SEMIO_ERL&#39;: 0.17729003758178433,
+ &#39;ZABEOTYP_3&#39;: 0.19699380479101139,
+ &#39;FINANZ_VORSORGER&#39;: 0.21947308869095236,
+ &#39;ALTERSKATEGORIE_GROB&#39;: 0.23244126701657705}</pre>
 </div>
 
 </div>
@@ -17480,7 +17505,7 @@ dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[203]:</div>
+<div class="prompt input_prompt">In&nbsp;[85]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Map weights for the third principal component to corresponding feature names</span>
@@ -17498,171 +17523,171 @@ dtype: float64</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[203]:</div>
+    <div class="prompt output_prompt">Out[85]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;ANREDE_KZ&#39;: -0.33948547592697637,
- &#39;SEMIO_KAEM&#39;: -0.307302846624046,
- &#39;SEMIO_DOM&#39;: -0.27388255900167791,
- &#39;SEMIO_KRIT&#39;: -0.26387357724054217,
- &#39;SEMIO_ERL&#39;: -0.20608390786920452,
- &#39;FINANZ_ANLEGER&#39;: -0.15271218442958248,
- &#39;SEMIO_RAT&#39;: -0.14850627984069023,
- &#39;FINANZTYP_1&#39;: -0.098257336763275846,
- &#39;SHOPPER_TYP_2.0&#39;: -0.092796583589473874,
- &#39;LP_STATUS_FEIN_4.0&#39;: -0.082528600636945865,
- &#39;LP_STATUS_FEIN_2.0&#39;: -0.078176406939704096,
- &#39;FINANZ_HAUSBAUER&#39;: -0.066725360569357461,
- &#39;INNENSTADT&#39;: -0.065693844422767531,
- &#39;ZABEOTYP_4&#39;: -0.059756893197829584,
- &#39;BALLRAUM&#39;: -0.058525039314039878,
- &#39;WOHNLAGE&#39;: -0.053523238748645674,
- &#39;LP_FAMILIE_GROB_3.0&#39;: -0.052373518193362549,
- &#39;FINANZ_SPARER&#39;: -0.052151366510317286,
- &#39;KONSUMNAEHE&#39;: -0.051883678659602327,
- &#39;PLZ8_ANTG1&#39;: -0.050849520548397309,
- &#39;SHOPPER_TYP_3.0&#39;: -0.048683848648761976,
- &#39;HH_EINKOMMEN_SCORE&#39;: -0.047501373272632687,
- &#39;ZABEOTYP_3&#39;: -0.044140269344939462,
- &#39;KKK&#39;: -0.041478285776787201,
- &#39;FINANZ_UNAUFFAELLIGER&#39;: -0.041253738071170262,
- &#39;GEBAEUDETYP_RASTER&#39;: -0.038755230657094658,
- &#39;CAMEO_INTL_2015_Wealth_20.0&#39;: -0.038106504098081688,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_90.0&#39;: -0.037988469937869689,
- &#39;LP_FAMILIE_FEIN_4.0&#39;: -0.037932035598255337,
- &#39;PLZ8_GBZ&#39;: -0.037776119659587361,
- &#39;LP_STATUS_GROB_2.0&#39;: -0.03615060054385192,
- &#39;CJT_GESAMTTYP_2.0&#39;: -0.032897973224169909,
- &#39;CAMEO_DEUG_2015_4&#39;: -0.031392373796146775,
- &#39;NATIONALITAET_KZ_3.0&#39;: -0.02880856388744454,
- &#39;FINANZTYP_2&#39;: -0.028801397038795144,
- &#39;ZABEOTYP_5&#39;: -0.026576047236516416,
- &#39;LP_FAMILIE_FEIN_5.0&#39;: -0.026358817417754865,
- &#39;LP_FAMILIE_FEIN_3.0&#39;: -0.025123762883573306,
- &#39;REGIOTYP&#39;: -0.024317284591286726,
- &#39;GFK_URLAUBERTYP_9.0&#39;: -0.024245243441998344,
- &#39;CJT_GESAMTTYP_6.0&#39;: -0.02314657143368341,
- &#39;MOBI_REGIO&#39;: -0.022824350290643683,
- &#39;KBA13_ANZAHL_PKW&#39;: -0.021919964195422172,
- &#39;SEMIO_PFLICHT&#39;: -0.020682177556240952,
- &#39;GFK_URLAUBERTYP_12.0&#39;: -0.02061309219775476,
- &#39;CAMEO_INTL_2015_LifeStage_2.0&#39;: -0.020339319771804178,
- &#39;LP_STATUS_FEIN_5.0&#39;: -0.02031222834698455,
- &#39;KBA05_GBZ&#39;: -0.0201482527964091,
- &#39;CAMEO_INTL_2015_LifeStage_3.0&#39;: -0.019038751883702208,
- &#39;CAMEO_DEUG_2015_3&#39;: -0.018274593908108476,
- &#39;LP_STATUS_GROB_4.0&#39;: -0.018183702509604469,
- &#39;LP_STATUS_GROB_1.0&#39;: -0.017087571380715056,
- &#39;LP_STATUS_FEIN_9.0&#39;: -0.01667222499716824,
- &#39;MIN_GEBAEUDEJAHR&#39;: -0.016370490554651149,
- &#39;SEMIO_TRADV&#39;: -0.013169054425865155,
- &#39;KBA05_ANTG1&#39;: -0.013136597489022822,
- &#39;LP_FAMILIE_FEIN_1.0&#39;: -0.013085944105240437,
- &#39;LP_FAMILIE_GROB_1.0&#39;: -0.013085944105240437,
- &#39;GFK_URLAUBERTYP_2.0&#39;: -0.012804603148599977,
- &#39;KBA05_ANTG2&#39;: -0.010757009770753183,
- &#39;LP_FAMILIE_FEIN_7.0&#39;: -0.010206989385946752,
- &#39;CAMEO_DEUG_2015_6&#39;: -0.0094955341401731334,
- &#39;ZABEOTYP_2&#39;: -0.0094353586425821433,
- &#39;LP_FAMILIE_GROB_4.0&#39;: -0.0090353855005615991,
- &#39;LP_FAMILIE_FEIN_6.0&#39;: -0.0087422270887827693,
- &#39;VERS_TYP_1.0&#39;: -0.0085239778112297122,
- &#39;LP_STATUS_FEIN_8.0&#39;: -0.0062035103793352678,
- &#39;FINANZTYP_6&#39;: -0.0056138509295006024,
- &#39;ONLINE_AFFINITAET&#39;: -0.0055491614943146044,
- &#39;CAMEO_INTL_2015_LifeStage_4.0&#39;: -0.0048426703767020024,
- &#39;HEALTH_TYP&#39;: -0.0048239571067307347,
- &#39;GFK_URLAUBERTYP_11.0&#39;: -0.0035219789221260871,
- &#39;CAMEO_INTL_2015_Wealth_40.0&#39;: -0.0006756569665900638,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_70.0&#39;: -0.00065093770472691775,
- &#39;CAMEO_DEUG_2015_7&#39;: -0.00040060875345013079,
- &#39;OST_WEST_KZ&#39;: -0.0001281107620153734,
- &#39;CAMEO_INTL_2015_Wealth_30.0&#39;: 8.0031368603597792e-05,
- &#39;CAMEO_DEUG_2015_5&#39;: 0.00015419906207652794,
- &#39;SOHO_KZ&#39;: 0.00057571840130280654,
- &#39;KBA05_ANTG3&#39;: 0.0011105167027389922,
- &#39;GFK_URLAUBERTYP_1.0&#39;: 0.0015899709871432059,
- &#39;LP_FAMILIE_FEIN_8.0&#39;: 0.0016123673846687647,
- &#39;GFK_URLAUBERTYP_7.0&#39;: 0.0019128615696903551,
- &#39;GFK_URLAUBERTYP_3.0&#39;: 0.0019926807098184381,
- &#39;LP_FAMILIE_FEIN_9.0&#39;: 0.0026979669344711996,
- &#39;CAMEO_INTL_2015_LifeStage_5.0&#39;: 0.0035817632270876251,
- &#39;GFK_URLAUBERTYP_10.0&#39;: 0.0058841422355444695,
- &#39;GFK_URLAUBERTYP_6.0&#39;: 0.0064423736615690222,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_80.0&#39;: 0.0065339518777110268,
- &#39;CAMEO_DEUG_2015_2&#39;: 0.0071776462366161505,
- &#39;GFK_URLAUBERTYP_5.0&#39;: 0.0092432886757364049,
- &#39;NATIONALITAET_KZ_1.0&#39;: 0.0098344262566463208,
- &#39;CJT_GESAMTTYP_5.0&#39;: 0.010791529521714808,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_40.0&#39;: 0.011088817137610297,
- &#39;LP_FAMILIE_FEIN_11.0&#39;: 0.011394485963151025,
- &#39;ALTERSKATEGORIE_GROB&#39;: 0.011550870945128362,
- &#39;GFK_URLAUBERTYP_8.0&#39;: 0.011681984027929155,
- &#39;FINANZTYP_4&#39;: 0.012864820068166891,
- &#39;CJT_GESAMTTYP_1.0&#39;: 0.012918316951481053,
- &#39;ANZ_HH_TITEL&#39;: 0.013622673900103249,
- &#39;CAMEO_DEUG_2015_8&#39;: 0.013700152791926982,
- &#39;ANZ_TITEL&#39;: 0.014541441482651581,
- &#39;CJT_GESAMTTYP_3.0&#39;: 0.014681125444482272,
- &#39;CJT_GESAMTTYP_4.0&#39;: 0.015567802125681211,
- &#39;PLZ8_HHZ&#39;: 0.015904469402754896,
- &#39;LP_FAMILIE_FEIN_10.0&#39;: 0.016113485274875373,
- &#39;CAMEO_INTL_2015_Wealth_10.0&#39;: 0.018604142367501346,
- &#39;ANZ_HAUSHALTE_AKTIV&#39;: 0.020192532846447332,
- &#39;SEMIO_LUST&#39;: 0.020464289178781101,
- &#39;LP_FAMILIE_GROB_5.0&#39;: 0.021156444979242621,
- &#39;CAMEO_DEUG_2015_1&#39;: 0.021281890475012083,
- &#39;WOHNDAUER_2008&#39;: 0.021466220252359312,
- &#39;VERS_TYP_2.0&#39;: 0.021598853146523937,
- &#39;LP_LEBENSPHASE_GROB&#39;: 0.021709667239618386,
- &#39;ANZ_PERSONEN&#39;: 0.021953956472748153,
- &#39;CAMEO_INTL_2015_Wealth_50.0&#39;: 0.021984347147835755,
- &#39;LP_LEBENSPHASE_FEIN&#39;: 0.022193982844806923,
- &#39;LP_STATUS_FEIN_6.0&#39;: 0.022223190437561921,
- &#39;CAMEO_DEUG_2015_9&#39;: 0.022657170837025373,
- &#39;KBA05_ANTG4&#39;: 0.022818676556281083,
- &#39;FINANZTYP_3&#39;: 0.022839321298565064,
- &#39;LP_STATUS_FEIN_7.0&#39;: 0.025539078848914713,
- &#39;LP_FAMILIE_FEIN_2.0&#39;: 0.026002305436763642,
- &#39;LP_FAMILIE_GROB_2.0&#39;: 0.026002305436763642,
- &#39;GFK_URLAUBERTYP_4.0&#39;: 0.026140582614745878,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_50.0&#39;: 0.026233533037923633,
- &#39;PRAEGENDE_JUGENDJAHRE_Date_60.0&#39;: 0.027849738867769053,
- &#39;CAMEO_INTL_2015_LifeStage_1.0&#39;: 0.029832198112808413,
- &#39;NATIONALITAET_KZ_2.0&#39;: 0.030898584308111293,
- &#39;LP_STATUS_GROB_3.0&#39;: 0.032275113415689512,
- &#39;ARBEIT&#39;: 0.039504131609621247,
- &#39;PLZ8_ANTG2&#39;: 0.040423617339401044,
- &#39;RELAT_AB&#39;: 0.040966644848665183,
- &#39;LP_STATUS_FEIN_1.0&#39;: 0.042683831703194168,
- &#39;FINANZ_VORSORGER&#39;: 0.043772035377350325,
- &#39;LP_STATUS_FEIN_3.0&#39;: 0.045546943667123523,
- &#39;ZABEOTYP_6&#39;: 0.04756241196810046,
- &#39;SHOPPER_TYP_1.0&#39;: 0.049102713942707363,
- &#39;W_KEIT_KIND_HH&#39;: 0.05300251610361198,
- &#39;PLZ8_ANTG4&#39;: 0.055306342293755487,
- &#39;PLZ8_ANTG3&#39;: 0.055638883104845986,
- &#39;PLZ8_BAUMAX&#39;: 0.056398002491275398,
- &#39;LP_STATUS_FEIN_10.0&#39;: 0.067424762210294406,
- &#39;LP_STATUS_GROB_5.0&#39;: 0.067424762210294406,
- &#39;RETOURTYP_BK_S&#39;: 0.072853064721054545,
- &#39;EWDICHTE&#39;: 0.075461130513756927,
- &#39;ORTSGR_KLS9&#39;: 0.075952256128661397,
- &#39;SEMIO_MAT&#39;: 0.087477928820620582,
- &#39;PRAEGENDE_JUGENDJAHRE_Movement&#39;: 0.088336351062603902,
- &#39;GREEN_AVANTGARDE&#39;: 0.090528677131263308,
- &#39;SEMIO_REL&#39;: 0.11472398720246979,
- &#39;ZABEOTYP_1&#39;: 0.12122293201459684,
- &#39;SHOPPER_TYP_0.0&#39;: 0.1219730151468143,
- &#39;FINANZ_MINIMALIST&#39;: 0.12968512514010153,
- &#39;FINANZTYP_5&#39;: 0.13656018374113874,
- &#39;SEMIO_KULT&#39;: 0.24818378242425221,
- &#39;SEMIO_SOZ&#39;: 0.2557638727088109,
- &#39;SEMIO_FAM&#39;: 0.25694314910653426,
- &#39;SEMIO_VERT&#39;: 0.31536566625022061}</pre>
+<pre>{&#39;ANREDE_KZ&#39;: -0.33948507892662477,
+ &#39;SEMIO_KAEM&#39;: -0.30730280450791342,
+ &#39;SEMIO_DOM&#39;: -0.27388146065809199,
+ &#39;SEMIO_KRIT&#39;: -0.26387375422614034,
+ &#39;SEMIO_ERL&#39;: -0.20608373659123255,
+ &#39;FINANZ_ANLEGER&#39;: -0.1527118985107988,
+ &#39;SEMIO_RAT&#39;: -0.14850587375917554,
+ &#39;FINANZTYP_1&#39;: -0.098258811297553456,
+ &#39;SHOPPER_TYP_2.0&#39;: -0.09279745252105788,
+ &#39;LP_STATUS_FEIN_4.0&#39;: -0.082529606339067085,
+ &#39;LP_STATUS_FEIN_2.0&#39;: -0.078176019030954169,
+ &#39;FINANZ_HAUSBAUER&#39;: -0.066724815790156183,
+ &#39;INNENSTADT&#39;: -0.065692050819707554,
+ &#39;ZABEOTYP_4&#39;: -0.059757696730329254,
+ &#39;BALLRAUM&#39;: -0.058523891870805464,
+ &#39;WOHNLAGE&#39;: -0.053524039921934989,
+ &#39;LP_FAMILIE_GROB_3.0&#39;: -0.052373991937331409,
+ &#39;FINANZ_SPARER&#39;: -0.05215170405847451,
+ &#39;KONSUMNAEHE&#39;: -0.051881617651858399,
+ &#39;PLZ8_ANTG1&#39;: -0.050850220777529383,
+ &#39;SHOPPER_TYP_3.0&#39;: -0.048682859739499533,
+ &#39;HH_EINKOMMEN_SCORE&#39;: -0.047501410372416869,
+ &#39;ZABEOTYP_3&#39;: -0.044139021813053063,
+ &#39;KKK&#39;: -0.041476683741292833,
+ &#39;FINANZ_UNAUFFAELLIGER&#39;: -0.041253884901959061,
+ &#39;GEBAEUDETYP_RASTER&#39;: -0.038755642621476821,
+ &#39;CAMEO_INTL_2015_Wealth_20.0&#39;: -0.038105128266430748,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_90.0&#39;: -0.03798933047480775,
+ &#39;LP_FAMILIE_FEIN_4.0&#39;: -0.037932118404232058,
+ &#39;PLZ8_GBZ&#39;: -0.037776357681657588,
+ &#39;LP_STATUS_GROB_2.0&#39;: -0.036150522530449619,
+ &#39;CJT_GESAMTTYP_2.0&#39;: -0.032897799828781452,
+ &#39;CAMEO_DEUG_2015_4&#39;: -0.031392396889622837,
+ &#39;NATIONALITAET_KZ_3.0&#39;: -0.028807799528344419,
+ &#39;FINANZTYP_2&#39;: -0.028803656070794655,
+ &#39;ZABEOTYP_5&#39;: -0.026576963903187319,
+ &#39;LP_FAMILIE_FEIN_5.0&#39;: -0.026358567392654939,
+ &#39;LP_FAMILIE_FEIN_3.0&#39;: -0.025125172783687737,
+ &#39;REGIOTYP&#39;: -0.024315676809496464,
+ &#39;GFK_URLAUBERTYP_9.0&#39;: -0.024243541418837035,
+ &#39;CJT_GESAMTTYP_6.0&#39;: -0.02314435801968177,
+ &#39;MOBI_REGIO&#39;: -0.022824171000843121,
+ &#39;KBA13_ANZAHL_PKW&#39;: -0.021919200088899193,
+ &#39;SEMIO_PFLICHT&#39;: -0.020683167278537775,
+ &#39;GFK_URLAUBERTYP_12.0&#39;: -0.020610313256489817,
+ &#39;CAMEO_INTL_2015_LifeStage_2.0&#39;: -0.020338695115890312,
+ &#39;LP_STATUS_FEIN_5.0&#39;: -0.020312494121980895,
+ &#39;KBA05_GBZ&#39;: -0.020148165145822464,
+ &#39;CAMEO_INTL_2015_LifeStage_3.0&#39;: -0.019035038382117262,
+ &#39;CAMEO_DEUG_2015_3&#39;: -0.01827267434523035,
+ &#39;LP_STATUS_GROB_4.0&#39;: -0.018184430115248802,
+ &#39;LP_STATUS_GROB_1.0&#39;: -0.017086696062518645,
+ &#39;LP_STATUS_FEIN_9.0&#39;: -0.016672618950316614,
+ &#39;MIN_GEBAEUDEJAHR&#39;: -0.016371121916933198,
+ &#39;SEMIO_TRADV&#39;: -0.013169245200508805,
+ &#39;KBA05_ANTG1&#39;: -0.013136980927117719,
+ &#39;LP_FAMILIE_FEIN_1.0&#39;: -0.013085938631045149,
+ &#39;LP_FAMILIE_GROB_1.0&#39;: -0.013085938631045149,
+ &#39;GFK_URLAUBERTYP_2.0&#39;: -0.01280691269087721,
+ &#39;KBA05_ANTG2&#39;: -0.01075540074357703,
+ &#39;LP_FAMILIE_FEIN_7.0&#39;: -0.010207122798984589,
+ &#39;CAMEO_DEUG_2015_6&#39;: -0.0094981512530607961,
+ &#39;ZABEOTYP_2&#39;: -0.0094386173771051612,
+ &#39;LP_FAMILIE_GROB_4.0&#39;: -0.0090358320924146009,
+ &#39;LP_FAMILIE_FEIN_6.0&#39;: -0.0087451208005479581,
+ &#39;VERS_TYP_1.0&#39;: -0.0085242089416447588,
+ &#39;LP_STATUS_FEIN_8.0&#39;: -0.0062044812155367599,
+ &#39;FINANZTYP_6&#39;: -0.0056147948768297809,
+ &#39;ONLINE_AFFINITAET&#39;: -0.0055486925826979524,
+ &#39;CAMEO_INTL_2015_LifeStage_4.0&#39;: -0.0048445217824642974,
+ &#39;HEALTH_TYP&#39;: -0.0048224963772062054,
+ &#39;GFK_URLAUBERTYP_11.0&#39;: -0.0035214409688400054,
+ &#39;CAMEO_INTL_2015_Wealth_40.0&#39;: -0.00067616500832544824,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_70.0&#39;: -0.00065250337775511552,
+ &#39;CAMEO_DEUG_2015_7&#39;: -0.00040054834155863167,
+ &#39;OST_WEST_KZ&#39;: -0.00012656056117079476,
+ &#39;CAMEO_INTL_2015_Wealth_30.0&#39;: 7.9770008758406805e-05,
+ &#39;CAMEO_DEUG_2015_5&#39;: 0.00015466279947759057,
+ &#39;SOHO_KZ&#39;: 0.00057711054283496256,
+ &#39;KBA05_ANTG3&#39;: 0.0011093626436037847,
+ &#39;GFK_URLAUBERTYP_1.0&#39;: 0.0015885876578901616,
+ &#39;LP_FAMILIE_FEIN_8.0&#39;: 0.0016135981517084452,
+ &#39;GFK_URLAUBERTYP_7.0&#39;: 0.001912518997172277,
+ &#39;GFK_URLAUBERTYP_3.0&#39;: 0.0019925014934624639,
+ &#39;LP_FAMILIE_FEIN_9.0&#39;: 0.0026955259790610001,
+ &#39;CAMEO_INTL_2015_LifeStage_5.0&#39;: 0.0035788253982546874,
+ &#39;GFK_URLAUBERTYP_10.0&#39;: 0.005883508855112277,
+ &#39;GFK_URLAUBERTYP_6.0&#39;: 0.0064407388269954891,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_80.0&#39;: 0.0065369078032426848,
+ &#39;CAMEO_DEUG_2015_2&#39;: 0.0071785205923396624,
+ &#39;GFK_URLAUBERTYP_5.0&#39;: 0.0092422256018623843,
+ &#39;NATIONALITAET_KZ_1.0&#39;: 0.0098343865814811138,
+ &#39;CJT_GESAMTTYP_5.0&#39;: 0.010788578528823888,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_40.0&#39;: 0.011091506733366299,
+ &#39;LP_FAMILIE_FEIN_11.0&#39;: 0.011394004253758434,
+ &#39;ALTERSKATEGORIE_GROB&#39;: 0.011550860682790298,
+ &#39;GFK_URLAUBERTYP_8.0&#39;: 0.011680398533387112,
+ &#39;FINANZTYP_4&#39;: 0.012865474301236654,
+ &#39;CJT_GESAMTTYP_1.0&#39;: 0.012918393934704302,
+ &#39;ANZ_HH_TITEL&#39;: 0.013622484289756553,
+ &#39;CAMEO_DEUG_2015_8&#39;: 0.0137013386802086,
+ &#39;ANZ_TITEL&#39;: 0.014543371759517141,
+ &#39;CJT_GESAMTTYP_3.0&#39;: 0.01468215838530206,
+ &#39;CJT_GESAMTTYP_4.0&#39;: 0.0155673267073513,
+ &#39;PLZ8_HHZ&#39;: 0.015905576049204395,
+ &#39;LP_FAMILIE_FEIN_10.0&#39;: 0.016114858816162012,
+ &#39;CAMEO_INTL_2015_Wealth_10.0&#39;: 0.018605319845419018,
+ &#39;ANZ_HAUSHALTE_AKTIV&#39;: 0.020192036230892128,
+ &#39;SEMIO_LUST&#39;: 0.020463859752679628,
+ &#39;LP_FAMILIE_GROB_5.0&#39;: 0.02115670922008029,
+ &#39;CAMEO_DEUG_2015_1&#39;: 0.021282624031996308,
+ &#39;WOHNDAUER_2008&#39;: 0.021465923069542498,
+ &#39;VERS_TYP_2.0&#39;: 0.021599836446843646,
+ &#39;LP_LEBENSPHASE_GROB&#39;: 0.021709310053067428,
+ &#39;ANZ_PERSONEN&#39;: 0.021954810271754322,
+ &#39;CAMEO_INTL_2015_Wealth_50.0&#39;: 0.021982766913917158,
+ &#39;LP_LEBENSPHASE_FEIN&#39;: 0.022193489162851743,
+ &#39;LP_STATUS_FEIN_6.0&#39;: 0.022222768630522177,
+ &#39;CAMEO_DEUG_2015_9&#39;: 0.022655157332948227,
+ &#39;KBA05_ANTG4&#39;: 0.022819155394466641,
+ &#39;FINANZTYP_3&#39;: 0.02284164097886824,
+ &#39;LP_STATUS_FEIN_7.0&#39;: 0.025539143892674563,
+ &#39;LP_FAMILIE_FEIN_2.0&#39;: 0.02600276914122273,
+ &#39;LP_FAMILIE_GROB_2.0&#39;: 0.02600276914122273,
+ &#39;GFK_URLAUBERTYP_4.0&#39;: 0.026142993775997245,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_50.0&#39;: 0.026232794613362493,
+ &#39;PRAEGENDE_JUGENDJAHRE_Date_60.0&#39;: 0.027849343217537448,
+ &#39;CAMEO_INTL_2015_LifeStage_1.0&#39;: 0.029833026455954554,
+ &#39;NATIONALITAET_KZ_2.0&#39;: 0.030899459036192178,
+ &#39;LP_STATUS_GROB_3.0&#39;: 0.032274776696507405,
+ &#39;ARBEIT&#39;: 0.03950484274661694,
+ &#39;PLZ8_ANTG2&#39;: 0.040422465069497295,
+ &#39;RELAT_AB&#39;: 0.040966758659623501,
+ &#39;LP_STATUS_FEIN_1.0&#39;: 0.042684499970628814,
+ &#39;FINANZ_VORSORGER&#39;: 0.043771472424975186,
+ &#39;LP_STATUS_FEIN_3.0&#39;: 0.045548263260606181,
+ &#39;ZABEOTYP_6&#39;: 0.047559626971715389,
+ &#39;SHOPPER_TYP_1.0&#39;: 0.049103440688157175,
+ &#39;W_KEIT_KIND_HH&#39;: 0.053002806679356813,
+ &#39;PLZ8_ANTG4&#39;: 0.055307783075796396,
+ &#39;PLZ8_ANTG3&#39;: 0.055639489297332125,
+ &#39;PLZ8_BAUMAX&#39;: 0.056399336550837072,
+ &#39;LP_STATUS_FEIN_10.0&#39;: 0.06742446035283628,
+ &#39;LP_STATUS_GROB_5.0&#39;: 0.06742446035283628,
+ &#39;RETOURTYP_BK_S&#39;: 0.072850866634944791,
+ &#39;EWDICHTE&#39;: 0.075460173612845266,
+ &#39;ORTSGR_KLS9&#39;: 0.075952530056757991,
+ &#39;SEMIO_MAT&#39;: 0.087478965015707719,
+ &#39;PRAEGENDE_JUGENDJAHRE_Movement&#39;: 0.088335783484701308,
+ &#39;GREEN_AVANTGARDE&#39;: 0.090528257940804532,
+ &#39;SEMIO_REL&#39;: 0.11472298819216471,
+ &#39;ZABEOTYP_1&#39;: 0.12122698749585706,
+ &#39;SHOPPER_TYP_0.0&#39;: 0.12197304412456993,
+ &#39;FINANZ_MINIMALIST&#39;: 0.12968510278141684,
+ &#39;FINANZTYP_5&#39;: 0.13656365311177496,
+ &#39;SEMIO_KULT&#39;: 0.24818354354810898,
+ &#39;SEMIO_SOZ&#39;: 0.25576411605109611,
+ &#39;SEMIO_FAM&#39;: 0.25694234857191767,
+ &#39;SEMIO_VERT&#39;: 0.31536545811696554}</pre>
 </div>
 
 </div>
@@ -17751,7 +17776,7 @@ So, we can see that for the first component, features related to Family and thei
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[204]:</div>
+<div class="prompt input_prompt">In&nbsp;[86]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Over a number of different cluster counts...</span>
@@ -17788,16 +17813,16 @@ So, we can see that for the first component, features related to Family and thei
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>132.409494907 for n_clusters= 1
-114.25714195 for n_clusters= 3
-107.341272064 for n_clusters= 5
-103.843997118 for n_clusters= 7
-101.250324106 for n_clusters= 9
-98.4554018357 for n_clusters= 11
-97.2136672079 for n_clusters= 13
-94.6048665519 for n_clusters= 15
-93.3174080912 for n_clusters= 17
-91.861113555 for n_clusters= 19
+<pre>132.461161728 for n_clusters= 1
+114.309266152 for n_clusters= 3
+107.3962518 for n_clusters= 5
+103.793334954 for n_clusters= 7
+101.274151835 for n_clusters= 9
+98.7062544404 for n_clusters= 11
+97.0660024517 for n_clusters= 13
+94.9525714311 for n_clusters= 15
+93.6085407413 for n_clusters= 17
+91.926508193 for n_clusters= 19
 </pre>
 </div>
 </div>
@@ -17808,7 +17833,7 @@ So, we can see that for the first component, features related to Family and thei
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[205]:</div>
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Investigate the change in within-cluster distance across number of clusters.</span>
@@ -17830,7 +17855,7 @@ So, we can see that for the first component, features related to Family and thei
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[205]:</div>
+    <div class="prompt output_prompt">Out[87]:</div>
 
 
 
@@ -17849,7 +17874,7 @@ So, we can see that for the first component, features related to Family and thei
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -17862,7 +17887,7 @@ So, we can see that for the first component, features related to Family and thei
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[206]:</div>
+<div class="prompt input_prompt">In&nbsp;[88]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Re-fit the k-means model with the selected number of clusters and obtain</span>
@@ -17880,7 +17905,7 @@ So, we can see that for the first component, features related to Family and thei
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[207]:</div>
+<div class="prompt input_prompt">In&nbsp;[89]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">predictions</span>
@@ -17896,13 +17921,13 @@ So, we can see that for the first component, features related to Family and thei
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[207]:</div>
+    <div class="prompt output_prompt">Out[89]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([17,  4,  3, ...,  6,  2, 13], dtype=int32)</pre>
+<pre>array([10, 18, 13, ..., 18, 16,  8], dtype=int32)</pre>
 </div>
 
 </div>
@@ -17936,7 +17961,7 @@ We will pick 19 clusters to re fit the k means model.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[176]:</div>
+<div class="prompt input_prompt">In&nbsp;[236]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load in the customer demographics data.</span>
@@ -17950,7 +17975,7 @@ We will pick 19 clusters to re fit the k means model.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[177]:</div>
+<div class="prompt input_prompt">In&nbsp;[237]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Apply preprocessing, feature transformation, and clustering from the general</span>
@@ -17967,6 +17992,17 @@ We will pick 19 clusters to re fit the k means model.</p>
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total number of missing values after conversion is 3112918
+</pre>
+</div>
+</div>
 
 <div class="output_area">
 
@@ -17997,7 +18033,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[208]:</div>
+<div class="prompt input_prompt">In&nbsp;[238]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">clean_customers</span><span class="o">.</span><span class="n">shape</span>
@@ -18013,7 +18049,7 @@ See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stabl
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[208]:</div>
+    <div class="prompt output_prompt">Out[238]:</div>
 
 
 
