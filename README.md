@@ -9,6 +9,18 @@ then use those clusters to see which of them comprise the main user base for the
 Prior to applying the machine learning methods, you will also need to assess and clean the data in order to convert the data into a usable form.
 
 
+Our Data
+
+There are four files associated with this project
+
+- `Udacity_AZDIAS_Subset.csv`: Demographics data for the general population of Germany; 891211 persons (rows) x 85 features (columns).
+- `Udacity_CUSTOMERS_Subset.csv`: Demographics data for customers of a mail-order company; 191652 persons (rows) x 85 features (columns).
+- `Data_Dictionary.md`: Detailed information file about the features in the provided datasets.
+- `AZDIAS_Feature_Summary.csv`: Summary of feature attributes for demographics data; 85 features (rows) x 4 columns
+
+Each row of the demographics files represents a single person, but also includes information outside of individuals, including information about their household, building, and neighborhood. You will use this information to cluster the general population into groups with similar demographic properties. Then, you will see how the people in the customers dataset fit into those created clusters. The hope here is that certain clusters are over-represented in the customers data, as compared to the general population; those over-represented clusters will be assumed to be part of the core userbase. This information can then be used for further applications, such as targeting for a marketing campaign.
+
+
 
 Why this project?
 
@@ -22,51 +34,3 @@ Clustering techniques are useful for understanding how the data points themselve
 In addition, the dataset presented in this project requires a number of assessment and cleaning steps before you can apply your machine learning methods. 
 In workplace contexts, you will frequently need to work with data that is untidy or needs preprocessing before standard algorithms and models can be applied. 
 The ability to perform data wrangling and the ability to make decisions on data that you work with are both valuable skills that you will practice in this project.
-
-
-
-
-
-
-
-
-
-
-
-
-
-Step 1: Preprocessing
-
-When you start an analysis, you must first explore and understand the data that you are working with. In this (and the next) step of the project, 
-you’ll be working with the general demographics data. As part of your investigation of dataset properties, you must attend to a few key points:
-
-How are missing or unknown values encoded in the data? Are there certain features (columns) that should be removed from the analysis because of missing data? 
-Are there certain data points (rows) that should be treated separately from the rest?
-Consider the level of measurement for each feature in the dataset (e.g. categorical, ordinal, numeric). What assumptions must be made in order to use each feature in the final analysis? 
-Are there features that need to be re-encoded before they can be used? Are there additional features that can be dropped at this stage?
-
-You will create a cleaning procedure that you will apply first to the general demographic data, then later to the customers data.
-Step 2: Feature Transformation
-
-Now that your data is clean, you will use dimensionality reduction techniques to identify relationships between variables in the dataset,
- resulting in the creation of a new set of variables that account for those correlations. In this stage of the project, you will attend to the following points:
-
-    The first technique that you should perform on your data is feature scaling. What might happen if we don’t perform feature scaling before applying later techniques you’ll be using?
-    Once you’ve scaled your features, you can then apply principal component analysis (PCA) to find the vectors of maximal variability. 
-How much variability in the data does each principal component capture? 
-Can you interpret associations between original features in your dataset based on the weights given on the strongest components? 
-How many components will you keep as part of the dimensionality reduction process?
-
-You will use the sklearn library to create objects that implement your feature scaling and PCA dimensionality reduction decisions.
-Step 3: Clustering
-
-Finally, on your transformed data, you will apply clustering techniques to identify groups in the general demographic data. 
-You will then apply the same clustering model to the customers dataset to see how market segments differ between the general population and the mail-order sales company. 
-You will tackle the following points in this stage:
-
-    Use the k-means method to cluster the demographic data into groups. How should you make a decision on how many clusters to use?
-    Apply the techniques and models that you fit on the demographic data to the customers data: data cleaning, feature scaling, 
-    PCA, and k-means clustering. Compare the distribution of people by cluster for the customer data to that of the general population. Can you say anything about which types of people are likely consumers for the mail-order sales company?
-
-sklearn will continue to be used in this part of the project, to perform your k-means clustering. 
-In the end, you will export the completed notebook with your work as an HTML file, which will serve as a report documenting your approach and findings.
